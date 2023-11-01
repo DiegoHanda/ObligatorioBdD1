@@ -15,7 +15,7 @@ create table Funcionarios (
     Teléfono varchar(20) NOT NULL,
     Email varchar(100) NOT NULL,
     LogId int NOT NULL,
-    FOREIGN KEY (LogId) REFERENCES Logins (LOGID)
+    FOREIGN KEY (LogId) REFERENCES Logins (LogId)
 );
 
 CREATE TABLE Agenda (
