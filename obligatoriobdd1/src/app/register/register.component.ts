@@ -8,7 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  constructor(private route: ActivatedRoute, private router: Router, private location: Location) { }
+  constructor(private location: Location) { }
 
   index = 100;
 
