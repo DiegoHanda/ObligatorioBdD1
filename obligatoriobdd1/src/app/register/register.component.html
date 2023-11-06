@@ -1,43 +1,73 @@
 <div class="container">
     <div [hidden]="submitted">
         <form action="#"></form>
-        <h1>Registro de Admin</h1>
+        <h1>Registro de funcionarios</h1>
         <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
             <div class="form-group">
-                <label for="fullName">Nombre y Apellido</label>
-                <input type="text" class="form-control" id="fullName" required [(ngModel)]="model.fullName"
-                    name="fullName" #fullName="ngModel">
-                <div [hidden]="fullName.valid || fullName.pristine" class="alert alert-danger">
-                    El campo 'Nombre y Apellido' es obligatorio
+                <label for="ci">ci</label>
+                <input type="text" class="form-control" id="ci" 
+                    name="ci">
+                <div class="alert alert-danger">
+                    El campo 'ci' es obligatorio
                 </div>
+
+                <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input type="text" class="form-control" id="name" 
+                        name="name" >
+                    <div class="alert alert-danger">
+                        El campo 'Nombre' es obligatorio
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="surname">Apellido</label>
+                    <input type="text" class="form-control" id="surname" 
+                        name="surname" >
+                    <div class="alert alert-danger">
+                        El campo 'Apellido' es obligatorio
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="bthdate">fecha de nacimiento</label>
+                    <input type="text" class="form-control" id="bthdate" 
+                        name="bthdate" >
+                    <div class="alert alert-danger">
+                        El campo 'fecha de nacimiento' es obligatorio
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="direccion">direccion</label>
+                    <input type="text" class="form-control" id="direccion"
+                        name="direccion" >
+                    <div class="alert alert-danger">
+                        El campo 'direccion' es obligatorio
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="telefono">telefono</label>
+                    <input type="text" class="form-control" id="telefono"  
+                        name="telefono" >
+                    <div class="alert alert-danger">
+                        El campo 'telefono' es obligatorio
+                    </div>
+                </div>
+                
+                
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="text" class="form-control" id="email" required [(ngModel)]="model.email"
-                    name="email" #email="ngModel">
-                <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+                <input type="text" class="form-control" id="email" 
+                    name="email" >
+                <div class="alert alert-danger">
                     El campo 'Email' es obligatorio
                 </div>
             </div>
             
-            <div class="form-group">
-                <label for="username">Nombre de Usuario</label>
-                <input type="text" class="form-control" id="username" required [(ngModel)]="model.username"
-                    name="username" #username="ngModel">
-                <div [hidden]="username.valid || username.pristine" class="alert alert-danger">
-                    El campo 'Nombre de Usuario' es obligatorio
-                </div>
-            </div>
-            
-            <div class="form-group">
-                <label for="password">Contraseña</label>
-                <input type="text" class="form-control" id="password" required [(ngModel)]="model.password"
-                    name="password" #password="ngModel">
-                <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
-                    El campo 'Contraseña' es obligatorio
-                </div>
-            </div>
-            <button type="button" class="btn btn-success">Registrar Usuario</button>
+            <button type="button" class="btn btn-success">Registrar funcionario</button>
         </form>
     </div>
 </div>

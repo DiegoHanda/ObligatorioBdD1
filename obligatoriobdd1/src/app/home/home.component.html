@@ -1,7 +1,7 @@
 <div class="container" id="container" [ngClass]="{ 'right-panel-active': overlayRight }">
 	<div class="form-container sign-up-container">
 		<form action="#">
-			<h1>Unirse</h1>
+			<h1>Funcionarios registrados</h1>
 			<div class="social-container">
 				<div href="#" class="social happy">
 					<i class="gg-smile-mouth-open"></i>
@@ -11,51 +11,38 @@
 				</div>
 				<div href="#" class="social sad"><i class="gg-smile-sad"></i></div>
 			</div>
-			<span>Con que tienes un código, ¿no?</span>
-			<span>Ingresa el código aquí</span>
-			<input type="text" placeholder="Código" (ngModel)="(gameUrl)" />
-			<button>Unirse</button>
+			<span>ya estas registrado, ¿no?</span>
+			<button routerLink="/register">Toque aquí si NO está registrado</button>
 		</form>
 	</div>
 	<div class="form-container sign-in-container">
 		<form action="#">
 			<h1>Iniciar Sesión</h1>
-			<div class="social-container">
-			  <div href="#" class="social happy"><i class="gg-smile-mouth-open"></i></div>
-			  <div href="#" class="social neutral"><i class="gg-smile-neutral"></i></div>
-			  <div href="#" class="social sad"><i class="gg-smile-sad"></i></div>
-			</div>
-			<span>¿Así que tienes una cuenta?</span>
+			<span>¿Así que ya estas registrado?</span>
 			<span>Inicia sesión aquí</span>
 			<input
 			  type="text"
 			  formControlName="username"
-			  placeholder="Usuario"
-			/>
-			<input
-			  type="password"
-			  formControlName="password"
-			  placeholder="Contraseña"
+			  placeholder="ci funcionario"
 			/>
 			<button type="submit">Iniciar Sesión</button>
-			<a href="register">Crea un nuevo usuario</a>
 		  </form>
 		  
 	</div>
 	<div class="overlay-container">
 		<div class="overlay">
 			<div class="overlay-panel overlay-left">
-				<h1>Crear Juego</h1>
-				<p>Inicia Sesión y Crea tu Juego</p>
+				<h1></h1>
+				<p></p>
 				<button class="ghost" id="signIn" (click)="toggleOverlay()">
-					Crear
+					
 				</button>
 			</div>
 			<div class="overlay-panel overlay-right">
-				<h1>Unirse a Juego</h1>
-				<p>Ingresa un Código y Únete a tus Amigos</p>
+				<h1>registro de funcionarios</h1>
+				<p>Ingresa tu ci</p>
 				<button class="ghost" id="signUp" (click)="toggleOverlay()">
-					Unirse
+					No registrado
 				</button>
 			</div>
 		</div>
