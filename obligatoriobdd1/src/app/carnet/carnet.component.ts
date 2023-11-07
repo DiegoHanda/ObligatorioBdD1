@@ -5,22 +5,21 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-carnet',
   templateUrl: './carnet.component.html',
-  styleUrls: ['./carnet.component.css']
+  styleUrls: ['./carnet.component.css'],
 })
 export class CarnetComponent {
+  showInputs: boolean = false;
 
-  constructor(private router: Router, private location: Location) { }
+  constructor() {}
 
-  index = 100;
-
-  model = { fullName: 'Tu Nombre', username: 'nombre_usuario', password: 'qhiud2xka526ubcds8', email: 'usuario@gmail.com' };
-
+  ngOnInit(){
+  }
   submitted = false;
-  onSubmit() { this.submitted = true; }
-
-
-  goBack(): void {
-    this.location.back();
+  onSubmit() {
+    this.submitted = true;
   }
 
+  toggleInputs(value: boolean): void {
+    this.showInputs = value;
+  }
 }
