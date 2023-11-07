@@ -27,11 +27,12 @@ CREATE TABLE Agenda (
 );
 
 CREATE TABLE Carnet_Salud (
-    Ci int PRIMARY KEY,  -- ¿Cual es la PRIMARY KEY?
+    Ci int,  -- ¿Cual es la PRIMARY KEY?
     FOREIGN KEY (Ci) REFERENCES Funcionarios (Ci),
     Fch_Emision date NOT NULL,
     Fch_Vencimiento date NOT NULL,
-    Comprobante varchar(255) NOT NULL
+    Comprobante varchar(255) NOT NULL,
+    PRIMARY KEY (Ci, Fch_Emision)
 );
 
 CREATE TABLE Periodos_Actualizacion (
@@ -42,3 +43,5 @@ CREATE TABLE Periodos_Actualizacion (
     PRIMARY KEY (Año, Semestre, Fch_Inicio, Fch_Fin)
 );
 
+INSERT INTO Periodos_Actualizacion (Año, Semestre, Fch_Inicio, Fch_Fin)
+VALUES (2023, 2, '2023-11-01', '2023-11-15');
