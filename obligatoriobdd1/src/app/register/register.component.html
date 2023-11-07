@@ -1,73 +1,83 @@
 <div class="container">
     <div [hidden]="submitted">
-        <form action="#"></form>
-        <h1>Registro de funcionarios</h1>
-        <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
-            <div class="form-group">
-                <label for="ci">ci</label>
-                <input type="text" class="form-control" id="ci" 
-                    name="ci">
-                <div class="alert alert-danger">
-                    El campo 'ci' es obligatorio
-                </div>
-
-                <div class="form-group">
-                    <label for="name">Nombre</label>
-                    <input type="text" class="form-control" id="name" 
-                        name="name" >
-                    <div class="alert alert-danger">
-                        El campo 'Nombre' es obligatorio
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="surname">Apellido</label>
-                    <input type="text" class="form-control" id="surname" 
-                        name="surname" >
-                    <div class="alert alert-danger">
-                        El campo 'Apellido' es obligatorio
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="bthdate">fecha de nacimiento</label>
-                    <input type="text" class="form-control" id="bthdate" 
-                        name="bthdate" >
-                    <div class="alert alert-danger">
-                        El campo 'fecha de nacimiento' es obligatorio
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="direccion">direccion</label>
-                    <input type="text" class="form-control" id="direccion"
-                        name="direccion" >
-                    <div class="alert alert-danger">
-                        El campo 'direccion' es obligatorio
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="telefono">telefono</label>
-                    <input type="text" class="form-control" id="telefono"  
-                        name="telefono" >
-                    <div class="alert alert-danger">
-                        El campo 'telefono' es obligatorio
-                    </div>
-                </div>
-                
-                
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="text" class="form-control" id="email" 
-                    name="email" >
-                <div class="alert alert-danger">
-                    El campo 'Email' es obligatorio
-                </div>
-            </div>
-            
-            <button type="button" class="btn btn-success">Registrar funcionario</button>
-        </form>
+      <h1>Registro de funcionarios</h1>
+      <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+        <div class="form-group">
+          <input
+            type="text"
+            formControlName="ci"
+            placeholder="Cédula de Identidad"
+            required="true"
+            class="form-control"
+          />
+          <input
+            type="text"
+            formControlName="fullName"
+            placeholder="Nombre Completo"
+            required="true"
+            class="form-control"
+          />
+          <input
+            type="date"
+            formControlName="bthDate"
+            placeholder="Fecha de Nacimiento"
+            class="form-control"
+          />
+          <div class="radio-container">
+            <label for="true">Tengo Carnet</label>
+            <input
+              type="radio"
+              id="true"
+              name="option"
+              value="true"
+              (change)="toggleInputs(true)"
+            />
+  
+            <label for="false">No Tengo Carnet</label>
+            <input
+              type="radio"
+              id="false"
+              name="option"
+              value="false"
+              (change)="toggleInputs(false)"
+              checked
+            />
+          </div>
+          <div *ngIf="showInputs">
+            <input
+              type="date"
+              formControlName="expDate"
+              placeholder="Fecha de Vencimiento"
+              class="form-control"
+            />
+            <input
+              type="file"
+              formControlName="comprobant"
+              placeholder="Comprobante"
+              class="form-control"
+            />
+          </div>
+          <input
+              type="text"
+              formControlName="address"
+              placeholder="Domicilio"
+              class="form-control"
+            />
+            <input
+              type="email"
+              formControlName="email"
+              placeholder="Email"
+              class="form-control"
+            />
+            <input
+              type="tel"
+              formControlName="phoneNumber"
+              placeholder="Teléfono"
+              class="form-control"
+            />
+        </div>
+        <button type="submit">Crear Cuenta</button>
+      </form>
     </div>
-</div>
+  </div>
+  

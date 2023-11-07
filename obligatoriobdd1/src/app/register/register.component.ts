@@ -1,24 +1,24 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
-  constructor(private location: Location) { }
+  showInputs: boolean = false;
+  submitted: boolean = false;
 
-  index = 100;
+  constructor() {}
 
-  model = { fullName: 'Tu Nombre', username: 'nombre_usuario', password: 'qhiud2xka526ubcds8', email: 'usuario@gmail.com' };
+  ngOnInit() {}
 
-  submitted = false;
-  onSubmit() { this.submitted = true; }
-
-
-  goBack(): void {
-    this.location.back();
+  onSubmit() {
+    this.submitted = true;
+  }
+  toggleInputs(value: boolean): void {
+    this.showInputs = value;
   }
 }

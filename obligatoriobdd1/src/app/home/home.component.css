@@ -15,7 +15,7 @@ body {
 	margin: -20px 0 50px;
 }
 
-h1 {
+h1, h2 {
 	font-weight: bold;
 	margin: 0;
 }
@@ -217,3 +217,12 @@ input {
 	margin: 20px 0;
 }
 
+.radio-container {
+	display: flex;
+	align-items: center;
+	margin: 8px;
+  }
+  
+  .radio-container label {
+	margin-right: 5px;
+  }
