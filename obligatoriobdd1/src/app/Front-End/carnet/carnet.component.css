@@ -66,7 +66,7 @@ label {
 .form-group input{
     display: flex;
     width: 95%;
-    height: 25px;
+    height: 100%;
     overflow: auto;
 }
 
@@ -138,4 +138,13 @@ label {
     margin-bottom: 10px;
     background-color: #fff;
 }
+.radio-container {
+	display: flex;
+	align-items: center;
+	margin: 8px;
+  }
+  
+  .radio-container label {
+	margin-right: 5px;
+  }
 

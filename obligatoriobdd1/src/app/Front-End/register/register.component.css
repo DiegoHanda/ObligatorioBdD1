@@ -1,14 +1,14 @@
 .ng-valid[required],
 .ng-valid.required {
-    border-left: 5px solid #FF4B2B;
+    border-left: 5px solid #3e53ec;
 }
 
 .ng-invalid:not(form) {
-    border-left: 5px solid #FF4B2B;
+    border-left: 5px solid  #2b44ff;
 }
 
 .alert-danger {
-    background-color: #FF4B2B;
+    background-color:  #2b44ff;
     color: #fff;
     padding: 10px;
     border-radius: 5px;
@@ -38,7 +38,7 @@ h1 {
     margin: 0;
     margin-bottom: 20px;
     color: #ffffff;
-    background-color: #FF416C;
+    background-color: #3e53ec;
 }
 
 .container form {
@@ -58,7 +58,7 @@ h1 {
 /* Styles for the form labels */
 label {
     font-weight: bold;
-    color: #FF416C;
+    color:  #2b44ff;
     display: block;
     margin-bottom: 5px;
 }
@@ -66,7 +66,7 @@ label {
 .form-group input{
     display: flex;
     width: 95%;
-    height: 25px;
+    height: 100%;
     overflow: auto;
 }
 
@@ -83,7 +83,7 @@ label {
 
 /* Styles for the error messages */
 .alert-danger {
-    color: #FF416C;
+    color: #ccc;
 }
 
 /* Styles for the buttons */
@@ -100,8 +100,8 @@ label {
 
 .btn-success {
     border-radius: 20px;
-    border: 1px solid #FF4B2B;
-    background-color: #FF4B2B;
+    border: 1px solid #3e53ec;
+    background-color:  #2b44ff;
     color: #FFFFFF;
     font-size: 14px;
     font-weight: bold;
@@ -118,7 +118,7 @@ label {
 
 .btn-default {
     background-color: #fff;
-    color: #FF416C;
+    color: #2b44ff;
     border: 1px solid #ccc;
     margin-right: 10px;
 }
@@ -138,4 +138,13 @@ label {
     margin-bottom: 10px;
     background-color: #fff;
 }
+.radio-container {
+	display: flex;
+	align-items: center;
+	margin: 8px;
+  }
+  
+  .radio-container label {
+	margin-right: 5px;
+  }
 

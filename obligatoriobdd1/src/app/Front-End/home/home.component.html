@@ -1,0 +1,54 @@
+<div
+  class="container"
+  id="container"
+  [ngClass]="{ 'right-panel-active': overlayRight }"
+>
+  <div class="form-container sign-up-container">
+    <form action="#">
+      <h2>Modificar Fecha</h2>
+      <span>Modifique la Fecha de Finalización</span>
+	  <input
+        type="date"
+        formControlName="username"
+        placeholder="Nueva Fecha de Finalización"
+      />
+      <button type="submit">Confirmar</button>
+    </form>
+  </div>
+  <div class="form-container sign-in-container">
+    <form action="#">
+      <h2>Iniciar Sesión</h2>
+      <span>Inicia Sesión Para Actualizar Tu Carnet</span>
+      <input
+        type="text"
+        formControlName="logId"
+        placeholder="logId"
+      />
+	  <input
+        type="password"
+        formControlName="password"
+        placeholder="Contraseña"
+      />
+      <button type="submit">Iniciar Sesión</button>
+      <a href="register">Crea un nuevo usuario</a>
+    </form>
+  </div>
+  <div class="overlay-container">
+    <div class="overlay">
+      <div class="overlay-panel overlay-left">
+        <h1>FUNCIONARIO</h1>
+        <p>Inicia Sesión Para Actualizar Tu Carnet</p>
+        <button class="ghost" id="signIn" (click)="toggleOverlay()">
+          Iniciar Sesión
+        </button>
+      </div>
+      <div class="overlay-panel overlay-right">
+        <h1>ADMINISTRADOR</h1>
+        <p>Ingresa Aquí Para Modificar El Período De Actualización De Carnet</p>
+        <button class="ghost" id="signUp" (click)="toggleOverlay()">
+          Modificar Fecha
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
