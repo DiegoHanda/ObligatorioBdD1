@@ -32,11 +32,8 @@
             name="option"
             value="true"
             (change)="toggleInputs(true)"
-            (click)="toggleInputs(true)"
-            [checked]="showInputs"
-            
           />
-        
+
           <label for="false">No Tengo Carnet</label>
           <input
             type="radio"
@@ -44,6 +41,7 @@
             name="option"
             value="false"
             (change)="toggleInputs(false)"
+            checked
           />
         </div>
         <div *ngIf="showInputs">
@@ -73,7 +71,6 @@
           type="email"
           formControlName="email"
           placeholder="Email"
-          required="true"
           class="form-control"
         />
         <input

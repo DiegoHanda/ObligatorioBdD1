@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { Location } from '@angular/common';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-carnet',
@@ -10,16 +8,21 @@ import { Router } from '@angular/router';
 export class CarnetComponent {
   showInputs: boolean = false;
 
-  constructor() {}
-
-  ngOnInit(){
+  constructor() {
+    
   }
+
+  ngOnInit() {}
   submitted = false;
   onSubmit() {
     this.submitted = true;
+    alert('Actualización Completada');
   }
 
   toggleInputs(value: boolean): void {
+    console.log(this.showInputs);
     this.showInputs = value;
+    console.log(this.showInputs);
+
   }
 }

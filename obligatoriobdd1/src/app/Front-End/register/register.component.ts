@@ -17,6 +17,8 @@ export class RegisterComponent {
 
   onSubmit() {
     this.submitted = true;
+    alert('Registro Completado');
+
   }
   toggleInputs(value: boolean): void {
     this.showInputs = value;
