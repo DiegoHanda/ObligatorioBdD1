@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Funcionario } from './funcionario';
+import { Funcionario } from '../Models/funcionario';
 import { Observable, catchError } from 'rxjs';
 
 @Injectable({
@@ -19,5 +19,9 @@ export class FuncionarioService {
           throw error;
         })
       );
+  }
+
+  actualizarFuncionario(id:number, funcionario: Funcionario): Observable<Object> {
+    return this.http.put('${this.apiUrl}/${id}', funcionario);
   }
 }
