@@ -3,7 +3,6 @@ import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FuncionarioService } from '../funcionario.service';
 import { Funcionario } from '../funcionario';
-import { CarnetService } from '../carnet.service';
 import { Carnet } from '../carnet';
 
 @Component({

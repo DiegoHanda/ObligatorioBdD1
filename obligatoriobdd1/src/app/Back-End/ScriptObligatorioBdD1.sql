@@ -2,20 +2,20 @@ create database ucucarnet;
 use ucucarnet;
 
 create table Logins (
-    LogId int PRIMARY KEY,
+    LogId int PRIMARY KEY AUTO_INCREMENT,
     password varchar(255) NOT NULL
 );
 
 create table Funcionarios (
     Ci int PRIMARY KEY,
-    Nombre varchar(50) NOT NULL,
-    Apellido varchar(50) NOT NULL,
+    NombreCompleto varchar(100) NOT NULL,
     Fch_Nacimiento date NOT NULL,
     Dirección varchar(255) NOT NULL,
     Teléfono varchar(20) NOT NULL,
     Email varchar(100) NOT NULL,
     LogId int NOT NULL,
     FOREIGN KEY (LogId) REFERENCES Logins (LogId)
+    /*UNIQUE (LogId)*/
 );
 
 CREATE TABLE Agenda (
@@ -31,11 +31,12 @@ CREATE TABLE Carnet_Salud (
     FOREIGN KEY (Ci) REFERENCES Funcionarios (Ci),
     Fch_Emision date NOT NULL,
     Fch_Vencimiento date NOT NULL,
-    Comprobante varchar(255) NOT NULL,
+    Comprobante blob NOT NULL,
     PRIMARY KEY (Ci, Fch_Emision)
 );
 
 CREATE TABLE Periodos_Actualizacion (
+
     Año int,
     Semestre int,
     Fch_Inicio date,
@@ -52,12 +53,16 @@ VALUES
     (2, 'fran19'),
     (3, 'alepicca');
 
--- Insert data into Funcionarios table
-INSERT INTO Funcionarios (Ci, Nombre, Apellido, Fch_Nacimiento, Dirección, Teléfono, Email, LogId)
+INSERT INTO Logins (password)
 VALUES
-    (123, 'Diego', 'Handalian', '2023-11-15', 'Comandante Braga', '+598 1322', 'diego.h@gmail.com', 1),
-    (456, 'Francisco', 'Cabarcos', '2023-08-23', 'Gral Urquiza', '+598 321', 'francisco.c@gmail.com', 2),
-    (789, 'Alejandro', 'Piccardo', '2023-07-16', 'Estero Bellaco', '+598 43121', 'alejandro.p@gmail.com', 3);
+    ('fer3');
+
+-- Insert data into Funcionarios table
+INSERT INTO Funcionarios (Ci, NombreCompleto, Fch_Nacimiento, Dirección, Teléfono, Email, LogId)
+VALUES
+    (123, 'Diego Handalian', '2023-11-15', 'Comandante Braga', '+598 1322', 'diego.h@gmail.com', 1),
+    (456, 'Francisco Cabarcos', '2023-08-23', 'Gral Urquiza', '+598 321', 'francisco.c@gmail.com', 2),
+    (789, 'Alejandro Piccardo', '2023-07-16', 'Estero Bellaco', '+598 43121', 'alejandro.p@gmail.com', 3);
 
 INSERT INTO Agenda (Nro, Ci, Fch_Agenda)
 VALUES
@@ -70,4 +75,3 @@ VALUES
     (123, '2023-11-01', '2024-11-01', 'Comprobante1'),
     (456, '2023-11-02', '2024-11-02', 'Comprobante2'),
     (789, '2023-11-03', '2024-11-03', 'Comprobante3');
-
