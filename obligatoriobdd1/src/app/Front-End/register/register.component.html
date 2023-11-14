@@ -37,6 +37,7 @@
           name="option"
           value="true"
           (change)="toggleInputs(true)"
+          [checked]="showInputs"
         />
 
         <label for="false">No Tengo Carnet</label>
@@ -46,7 +47,6 @@
           name="option"
           value="false"
           (change)="toggleInputs(false)"
-          checked
         />
       </div>
       <div *ngIf="showInputs">
@@ -90,6 +90,7 @@
       <input
         type="email"
         placeholder="Email"
+        required="true"
         class="form-control"
         id="email"
         [(ngModel)]="funcionario.email"
@@ -98,6 +99,7 @@
       <input
         type="number"
         placeholder="logId"
+        required="true"
         class="form-control"
         id="logId"
         [(ngModel)]="funcionario.logId"
