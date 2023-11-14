@@ -3,6 +3,7 @@ import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FuncionarioService } from '../funcionario.service';
 import { Funcionario } from '../funcionario';
+import { CarnetService } from '../carnet.service';
 import { Carnet } from '../carnet';
 
 @Component({
@@ -17,6 +18,7 @@ export class RegisterComponent {
 
   constructor(
     private funcionarioService: FuncionarioService,
+    private carnetService: CarnetService,
     private location: Location,
     private router: Router
   ) {}
@@ -33,9 +35,20 @@ export class RegisterComponent {
     this.funcionario = new Funcionario();
   }
 
+  saveCarnet() {
+    this.carnetService.crearCarnet(this.carnet).subscribe(
+      (data) => {
+        console.log(data), this.goHome();
+      },
+      (error) => console.log(error)
+    );
+    this.carnet = new Carnet();
+  }
+
   onSubmit() {
     console.log(this.funcionario);
     this.saveFuncionario();
+    this.saveCarnet();
     alert('Registro Completado');
   }
   toggleInputs(value: boolean): void {

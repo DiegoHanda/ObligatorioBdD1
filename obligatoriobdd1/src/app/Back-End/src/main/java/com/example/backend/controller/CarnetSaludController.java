@@ -19,4 +19,10 @@ public class CarnetSaludController {
   public List<CarnetSalud> getAllCarnetSalud() {
     return carnetSaludRepository.findAll();
   }
+
+   @PostMapping("/carnet_salud")
+  public Carnet crearCarnet(@RequestBody Carnet carnet) {
+    return carnetSaludRepository.save(carnet);
+  }
 }
+
