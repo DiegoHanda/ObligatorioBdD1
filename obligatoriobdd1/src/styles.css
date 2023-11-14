@@ -2,17 +2,6 @@
 	box-sizing: border-box;
 }
 
-body {
-	background: #f6f5f7;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	font-family: 'Montserrat', sans-serif;
-	height: 100vh;
-	margin: -20px 0 50px;
-}
-
 button {
 	border-radius: 20px;
 	border: 1px solid #2b44ff;
@@ -32,4 +21,14 @@ button:active {
 
 button:focus {
 	outline: none;
+}
+
+.footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: fit-content;
+	background-color: black;
+	text-align: center;
+	color: white;
 }

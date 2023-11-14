@@ -1,87 +1,109 @@
 <div class="container">
-  <div [hidden]="submitted">
-    <h1>Registro de funcionarios</h1>
-    <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
-      <div class="form-group">
+  <h1>Registro de funcionarios</h1>
+  <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+    <div class="form-group">
+      <input
+        type="text"
+        id="ci"
+        placeholder="Cédula de Identidad"
+        required="true"
+        class="form-control"
+        [(ngModel)]="funcionario.ci"
+        name="ci"
+      />
+      <input
+        type="text"
+        placeholder="Nombre Completo"
+        required="true"
+        class="form-control"
+        id="nombreCompleto"
+        [(ngModel)]="funcionario.nombreCompleto"
+        name="nombreCompleto"
+      />
+      <input
+        type="date"
+        placeholder="Fecha de Nacimiento"
+        required="true"
+        class="form-control"
+        id="fchNacimiento"
+        [(ngModel)]="funcionario.fchNacimiento"
+        name="fchNacimiento"
+      />
+      <div class="radio-container">
+        <label for="true">Tengo Carnet</label>
         <input
-          type="text"
-          formControlName="ci"
-          placeholder="Cédula de Identidad"
-          required="true"
-          class="form-control"
+          type="radio"
+          id="true"
+          name="option"
+          value="true"
+          (change)="toggleInputs(true)"
         />
-        <input
-          type="text"
-          formControlName="fullName"
-          placeholder="Nombre Completo"
-          required="true"
-          class="form-control"
-        />
-        <input
-          type="date"
-          formControlName="bthDate"
-          placeholder="Fecha de Nacimiento"
-          required="true"
-          class="form-control"
-        />
-        <div class="radio-container">
-          <label for="true">Tengo Carnet</label>
-          <input
-            type="radio"
-            id="true"
-            name="option"
-            value="true"
-            (change)="toggleInputs(true)"
-          />
 
-          <label for="false">No Tengo Carnet</label>
-          <input
-            type="radio"
-            id="false"
-            name="option"
-            value="false"
-            (change)="toggleInputs(false)"
-            checked
-          />
-        </div>
-        <div *ngIf="showInputs">
-          <input
-            type="date"
-            formControlName="expDate"
-            placeholder="Fecha de Vencimiento"
-            required="true"
-            class="form-control"
-          />
-          <input
-            type="file"
-            formControlName="comprobant"
-            placeholder="Comprobante"
-            required="true"
-            class="form-control"
-          />
-        </div>
+        <label for="false">No Tengo Carnet</label>
         <input
-          type="text"
-          formControlName="address"
-          placeholder="Domicilio"
-          required="true"
-          class="form-control"
-        />
-        <input
-          type="email"
-          formControlName="email"
-          placeholder="Email"
-          class="form-control"
-        />
-        <input
-          type="tel"
-          formControlName="phoneNumber"
-          placeholder="Teléfono"
-          required="true"
-          class="form-control"
+          type="radio"
+          id="false"
+          name="option"
+          value="false"
+          (change)="toggleInputs(false)"
+          checked
         />
       </div>
-      <button type="submit">Crear Cuenta</button>
-    </form>
-  </div>
+      <div *ngIf="showInputs">
+        <input
+          type="date"
+          placeholder="Fecha de Vencimiento"
+          required="true"
+          class="form-control"
+          id="fchVencimiento"
+          [(ngModel)]="carnet.fchVencimiento"
+          name="fchVencimiento"
+        />
+        <input
+          type="file"
+          placeholder="Imagen del Comprobante"
+          required="true"
+          class="form-control"
+          id="comprobante"
+          [(ngModel)]="carnet.comprobante"
+          name="comprobante"
+        />
+      </div>
+      <input
+        type="text"
+        placeholder="Domicilio"
+        required="true"
+        class="form-control"
+        id="direccion"
+        [(ngModel)]="funcionario.direccion"
+        name="direccion"
+      />
+      <input
+        type="tel"
+        placeholder="Teléfono"
+        required="true"
+        class="form-control"
+        id="telefono"
+        [(ngModel)]="funcionario.telefono"
+        name="telefono"
+      />
+      <input
+        type="email"
+        placeholder="Email"
+        class="form-control"
+        id="email"
+        [(ngModel)]="funcionario.email"
+        name="email"
+      />
+      <input
+        type="number"
+        placeholder="logId"
+        class="form-control"
+        id="logId"
+        [(ngModel)]="funcionario.logId"
+        name="logId"
+      />
+    </div>
+    <button type="submit">Crear Cuenta</button>
+  </form>
 </div>

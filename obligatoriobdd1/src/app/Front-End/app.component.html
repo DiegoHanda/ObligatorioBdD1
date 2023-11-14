@@ -1,2 +1,20 @@
-<img src="./assets/UCUlogo.png" alt="" routerLink=""> 
-<router-outlet></router-outlet>
+<nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a>
+        <img
+          src="./assets/UCUlogo.png"
+          routerLink=""
+          routerLinkActive="active"
+          class="nav-link"
+        />
+      </a>
+    </li>
+  </ul>
+</nav>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+<footer class="footer">
+  <span>Obligatorio Base de Datos 1</span>
+</footer>
