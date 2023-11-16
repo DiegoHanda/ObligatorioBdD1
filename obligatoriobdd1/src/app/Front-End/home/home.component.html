@@ -4,7 +4,7 @@
   [ngClass]="{ 'right-panel-active': overlayRight }"
 >
   <div class="form-container sign-up-container">
-    <form action="#">
+    <form (ngSubmit)="modificarPeriodo()" #periodForm="ngForm">
       <h2>Modificar Fecha</h2>
       <span>Modifique la Fecha de Finalización</span>
 	  <input
@@ -16,7 +16,7 @@
     </form>
   </div>
   <div class="form-container sign-in-container">
-    <form action="#">
+    <form (ngSubmit)="logIn()" #loginForm="ngForm">
       <h2>Iniciar Sesión</h2>
       <span>Inicia Sesión Para Actualizar Tu Carnet</span>
       <input

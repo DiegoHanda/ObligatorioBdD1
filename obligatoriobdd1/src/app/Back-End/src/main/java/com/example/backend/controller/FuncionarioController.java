@@ -23,4 +23,5 @@ public class FuncionarioController {
   public Funcionario crearFuncionario(@RequestBody Funcionario funcionario) {
     return funcionarioRepository.save(funcionario);
   }
+
 }

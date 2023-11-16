@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FuncionarioService } from '../funcionario.service';
-import { Funcionario } from '../funcionario';
-import { Carnet } from '../carnet';
+import { FuncionarioService } from '../Services/funcionario.service';
+import { Funcionario } from '../Models/funcionario';
+import { Carnet } from '../Models/carnet';
 
 @Component({
   selector: 'app-register',
