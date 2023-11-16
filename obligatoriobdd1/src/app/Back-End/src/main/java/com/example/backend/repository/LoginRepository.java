@@ -9,5 +9,5 @@ import org.springframework.stereotype.Repository;
 public interface LoginRepository extends JpaRepository<Login, Integer> {
 
   @Query("SELECT password FROM Login  WHERE logId = ?1")
-  Login findLogById(int lId);
+  String findPasswordById(int lId);
 }
