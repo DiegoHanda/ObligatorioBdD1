@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Carnet} from './Models/carnet';
 import { Observable, catchError } from 'rxjs';
+import { Carnet } from '../Models/carnet';
 
 @Injectable({
   providedIn: 'root',

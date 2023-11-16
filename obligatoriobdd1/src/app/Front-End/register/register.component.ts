@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FuncionarioService } from '../funcionario.service';
-import { Funcionario } from '../funcionario';
-import { Carnet } from '../carnet';
+import { FuncionarioService } from '../Services/funcionario.service';
+import { Funcionario } from '../Models/funcionario';
+import { Carnet } from '../Models/carnet';
+import { CarnetService } from '../Services/Carnet.service';
 
 @Component({
   selector: 'app-register',
@@ -36,10 +37,10 @@ export class RegisterComponent {
 
   saveCarnet() {
     this.carnetService.crearCarnet(this.carnet).subscribe(
-      (data) => {
+      (data: any) => {
         console.log(data), this.goHome();
       },
-      (error) => console.log(error)
+      (error: any) => console.log(error)
     );
     this.carnet = new Carnet();
   }
