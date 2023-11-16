@@ -16,18 +16,26 @@
     </form>
   </div>
   <div class="form-container sign-in-container">
-    <form (ngSubmit)="logIn()" #loginForm="ngForm">
+    <form (ngSubmit)="logIn2()" #loginForm="ngForm">
       <h2>Iniciar Sesión</h2>
       <span>Inicia Sesión Para Actualizar Tu Carnet</span>
       <input
-        type="text"
-        formControlName="logId"
-        placeholder="logId"
+        type="number"
+        placeholder="ID de Loggeo"
+        required="true"
+        class="form-control"
+        id="LogId"
+        [(ngModel)]="Login.logId"
+        name="LogId"
       />
 	  <input
-        type="password"
-        formControlName="password"
-        placeholder="Contraseña"
+      type="password"
+      placeholder="CONTRAsEÑA"
+      required="true"
+      class="form-control"
+      id="password"
+      [(ngModel)]="Login.password"
+      name="password"
       />
       <button type="submit">Iniciar Sesión</button>
       <a href="register">Crea un nuevo usuario</a>
