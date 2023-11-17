@@ -21,10 +21,10 @@ public class AgendaController {
   private FuncionarioRepository funcionarioRepository;
 
   @GetMapping("/agenda")
-  public List<Agenda> getAllAgenda() {
-    return agendaRepository.findAll();
+  public List<Agenda> getSinReservar() {
+    return agendaRepository.findAgendaDisponible();
   }
-  
+
   @PutMapping("/agenda/{logId}")
   public ResponseEntity<String> actualizarAgenda(@RequestBody AgendaDTO agendaActualizada, @RequestParam int logId) {
 
