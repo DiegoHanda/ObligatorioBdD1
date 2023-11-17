@@ -20,7 +20,7 @@ public class FuncionarioController {
   }
 
   @PostMapping("/funcionarios")
-  public Funcionario crearFuncionario(Funcionario funcionario) {
+  public Funcionario crearFuncionario(@RequestBody Funcionario funcionario) {
     return funcionarioRepository.save(funcionario);
   }
 
