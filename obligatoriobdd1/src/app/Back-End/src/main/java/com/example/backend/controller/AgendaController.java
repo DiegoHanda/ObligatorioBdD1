@@ -24,11 +24,7 @@ public class AgendaController {
   public List<Agenda> getAllAgenda() {
     return agendaRepository.findAll();
   }
-
-  @PostMapping("/carnet_salud")
-  public Agenda crearCarnet(@RequestBody Agenda agenda) {
-    return agendaRepository.save(agenda);
-  }
+  
   @PutMapping("/agenda/{logId}")
   public ResponseEntity<String> actualizarAgenda(@RequestBody AgendaDTO agendaActualizada, @RequestParam int logId) {
 
