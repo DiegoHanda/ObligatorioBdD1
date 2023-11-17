@@ -16,13 +16,21 @@ public class NotificacionService {
     @Autowired
     private EmailService emailService;
 
-    @Scheduled(cron = "0 0/2 * * * ?")
+    @Scheduled(cron = "0 0/1 * * * ?")
     public void notificarFuncionariosSinFormulario() {
+      System.out.println("Hola");
+
+      try {
         List<Funcionario> funcionariosSinFormulario = funcionarioRepository.findFuncionariosSinFormulario();
+        System.out.println("Número de funcionarios sin formulario: " + funcionariosSinFormulario.size());
 
         for (Funcionario funcionario : funcionariosSinFormulario) {
-            String mensaje = "Estimado " + funcionario.getnombreCompleto() + ", por favor complete su formulario.";
-            emailService.enviarCorreo(funcionario.getEmail(), "Recordatorio de formulario", mensaje);
+          System.out.println(funcionario.getnombreCompleto());
+          String mensaje = "Estimado " + funcionario.getnombreCompleto() + ", por favor complete su formulario.";
+          emailService.enviarCorreo(funcionario.getEmail(), "Recordatorio de formulario", mensaje);
         }
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
     }
 }

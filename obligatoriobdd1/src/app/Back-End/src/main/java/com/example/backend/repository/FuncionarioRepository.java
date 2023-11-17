@@ -9,6 +9,7 @@ import java.util.List;
 
 @Repository
 public interface FuncionarioRepository extends JpaRepository <Funcionario, Integer>{
-@Query("SELECT f FROM Funcionario f WHERE f.ci NOT IN (SELECT ff.funcionario.ci FROM Agenda ff)")
-List<Funcionario> findFuncionariosSinFormulario();
+  @Query("SELECT f FROM Funcionario f WHERE f.ci NOT IN (SELECT cs.funcionario.ci FROM CarnetSalud cs WHERE cs.fchVencimiento >= CURRENT_DATE)")
+  List<Funcionario> findFuncionariosSinFormulario();
+
 }
