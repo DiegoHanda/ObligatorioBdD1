@@ -3,9 +3,7 @@ package com.example.backend.controller;
 import com.example.backend.model.CarnetSalud;
 import com.example.backend.repository.CarnetSaludRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,4 +17,11 @@ public class CarnetSaludController {
   public List<CarnetSalud> getAllCarnetSalud() {
     return carnetSaludRepository.findAll();
   }
+
+  @PostMapping("/carnet_salud")
+  public CarnetSalud crearCarnet(@RequestBody CarnetSalud funcionario) {
+    return carnetSaludRepository.save(funcionario);
+  }
+
+
 }
