@@ -7,34 +7,35 @@ import jakarta.persistence.*;
 public class Login {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "LogId")
-  private int logId;
+  private int LogId;
 
-  @Column(name = "password", nullable = false)
-  private String password;
+  @Column(name = "Password", nullable = false)
+  private String Password;
 
   public Login() {
   }
 
-  public Login(String password) {
-    this.password = password;
+  public Login(int LogId, String Password) {
+    System.out.println(LogId);
+    this.LogId = LogId;
+    this.Password = Password;
   }
 
   public int getLogId() {
-    return logId;
+    return LogId;
   }
 
-  public void setLogId(int logId) {
-    this.logId = logId;
+  public void setLogId(int LogId) {
+    this.LogId = LogId;
   }
 
   public String getPassword() {
-    return password;
+    return Password;
   }
 
-  public void setPassword(String password) {
-    this.password = password;
+  public void setPassword(String Password) {
+    this.Password = Password;
   }
 
 }

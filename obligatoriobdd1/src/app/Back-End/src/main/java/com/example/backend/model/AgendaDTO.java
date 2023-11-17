@@ -1,13 +1,14 @@
 package com.example.backend.model;
 
 import jakarta.persistence.*;
+
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "Agenda")
 @IdClass(AgendaId.class)
-public class Agenda implements Serializable {
+public class AgendaDTO implements Serializable {
 
   @Id
   @Column(name = "Nro")
@@ -20,22 +21,22 @@ public class Agenda implements Serializable {
   @Id
   @Column(name = "Fch_Agenda")
   @Temporal(TemporalType.DATE)
-  private Date fchAgenda;
+  private LocalDate fchAgenda;
 
   // Constructors, getters, and setters
 
   // Default constructor
-  public Agenda() {
+  public AgendaDTO() {
   }
 
   // Constructor without Fch_Agenda
-  public Agenda(int nro, Funcionario funcionario) {
+  public AgendaDTO(int nro, Funcionario funcionario) {
     this.nro = nro;
     this.funcionario = funcionario;
   }
 
   // Constructor with Fch_Agenda
-  public Agenda(int nro, Funcionario funcionario, Date fchAgenda) {
+  public AgendaDTO(int nro, Funcionario funcionario, LocalDate fchAgenda) {
     this(nro, funcionario);
     this.fchAgenda = fchAgenda;
   }
@@ -58,11 +59,11 @@ public class Agenda implements Serializable {
     this.funcionario = funcionario;
   }
 
-  public Date getFchAgenda() {
+  public LocalDate getFchAgenda() {
     return fchAgenda;
   }
 
-  public void setFchAgenda(Date fchAgenda) {
+  public void setFchAgenda(LocalDate fchAgenda) {
     this.fchAgenda = fchAgenda;
   }
 }

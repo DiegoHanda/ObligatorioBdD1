@@ -32,14 +32,12 @@ public class PeriodoActualizacionController {
       PeriodoActualizacion ultimoPeriodo = optionalPeriodo.get();
 
       PeriodoActualizacion nuevoPeriodo = new PeriodoActualizacion(pNuevo.getAño(), pNuevo.getSemestre(), Date.valueOf(pNuevo.getFchInicio()), Date.valueOf(pNuevo.getFchFin()));
-
-      // Save the modified entity
       periodoActualizacionRepository.delete(ultimoPeriodo);
       PeriodoActualizacion pModificado = periodoActualizacionRepository.save(nuevoPeriodo);
 
       return ResponseEntity.ok(pModificado);
     } else {
-      throw new ResourceNotFoundException("No PeriodoActualizacion found");
+      throw new ResourceNotFoundException("No se encontró el Periodo de Actualizacion");
     }
   }
 

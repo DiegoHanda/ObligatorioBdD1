@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 
 import java.util.List;
 
@@ -21,9 +23,12 @@ public class CarnetSaludController {
     return carnetSaludRepository.findAll();
   }
 
-   @PostMapping("/carnet_salud")
-  public CarnetSalud crearCarnet(CarnetSalud carnet) {
-    return carnetSaludRepository.save(carnet);
+  @PostMapping("/carnet_salud")
+  public CarnetSalud crearCarnet(@RequestBody CarnetSalud funcionario) {
+    return carnetSaludRepository.save(funcionario);
   }
+
+
+
 }
 

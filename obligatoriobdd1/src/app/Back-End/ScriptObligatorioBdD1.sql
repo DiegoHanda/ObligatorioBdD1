@@ -1,9 +1,10 @@
+drop database ucucarnet;
 create database ucucarnet;
 use ucucarnet;
 
 create table Logins (
-    LogId int PRIMARY KEY AUTO_INCREMENT,
-    password varchar(255) NOT NULL
+    LogId int PRIMARY KEY,
+    Password varchar(255) NOT NULL
 );
 
 create table Funcionarios (
@@ -14,8 +15,8 @@ create table Funcionarios (
     Teléfono varchar(20) NOT NULL,
     Email varchar(100) NOT NULL,
     LogId int NOT NULL,
-    FOREIGN KEY (LogId) REFERENCES Logins (LogId)
-    /*UNIQUE (LogId)*/
+    FOREIGN KEY (LogId) REFERENCES Logins (LogId),
+    UNIQUE (LogId)
 );
 
 CREATE TABLE Agenda (
@@ -36,12 +37,17 @@ CREATE TABLE Carnet_Salud (
 );
 
 CREATE TABLE Periodos_Actualizacion (
-
     Año int,
     Semestre int,
     Fch_Inicio date,
     Fch_Fin date,
     PRIMARY KEY (Año, Semestre, Fch_Inicio, Fch_Fin)
+);
+
+CREATE TABLE Admin (
+    Ci int,
+    FOREIGN KEY (Ci) REFERENCES Funcionarios (Ci),
+    IsAdmin boolean PRIMARY KEY default FALSE
 );
 
 INSERT INTO Periodos_Actualizacion (Año, Semestre, Fch_Inicio, Fch_Fin)
@@ -53,10 +59,6 @@ VALUES
     (2, 'fran19'),
     (3, 'alepicca');
 
-INSERT INTO Logins (password)
-VALUES
-    ('fer3');
-
 -- Insert data into Funcionarios table
 INSERT INTO Funcionarios (Ci, NombreCompleto, Fch_Nacimiento, Dirección, Teléfono, Email, LogId)
 VALUES
@@ -66,12 +68,19 @@ VALUES
 
 INSERT INTO Agenda (Nro, Ci, Fch_Agenda)
 VALUES
-    (1, 123, '2023-11-20'),
-    (2, 456, '2023-11-21'),
-    (3, 789, '2023-11-22');
+    (2, 123, '2023-11-10'),
+    (3, 456, '2023-11-11'),
+    (4, 789, '2023-11-12'),
+    (3, 123, '2023-11-10'),
+    (4, 456, '2023-11-11'),
+    (5, 789, '2023-11-12'),
+    (4, 123, '2023-11-10'),
+    (5, 456, '2023-11-11'),
+    (6, 789, '2023-11-12');
 
 INSERT INTO Carnet_Salud (Ci, Fch_Emision, Fch_Vencimiento, Comprobante)
 VALUES
     (123, '2023-11-01', '2024-11-01', 'Comprobante1'),
     (456, '2023-11-02', '2024-11-02', 'Comprobante2'),
     (789, '2023-11-03', '2024-11-03', 'Comprobante3');
+

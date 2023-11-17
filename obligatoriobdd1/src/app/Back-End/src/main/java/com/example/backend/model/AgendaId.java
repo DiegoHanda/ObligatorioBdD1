@@ -7,7 +7,6 @@ import java.util.Objects;
 public class AgendaId implements Serializable {
 
   private int nro;
-  private Funcionario funcionario;
   private Date fchAgenda;
 
   // Constructors, equals, and hashCode
@@ -15,9 +14,8 @@ public class AgendaId implements Serializable {
   public AgendaId() {
   }
 
-  public AgendaId(int nro, Funcionario funcionario, Date fchAgenda) {
+  public AgendaId(int nro, Date fchAgenda) {
     this.nro = nro;
-    this.funcionario = funcionario;
     this.fchAgenda = fchAgenda;
   }
 
@@ -27,12 +25,11 @@ public class AgendaId implements Serializable {
     if (o == null || getClass() != o.getClass()) return false;
     AgendaId agendaId = (AgendaId) o;
     return nro == agendaId.nro &&
-      funcionario.equals(agendaId.funcionario) &&
       fchAgenda.equals(agendaId.fchAgenda);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(nro, funcionario, fchAgenda);
+    return Objects.hash(nro, fchAgenda);
   }
 }

@@ -27,7 +27,7 @@ public class Funcionario {
   private String email;
 
   @Column(name = "LogId")
-  private Integer logId;
+  private Integer LogId;
 
   public Funcionario() {
   }
@@ -41,7 +41,7 @@ public class Funcionario {
     this.direccion = direccion;
     this.telefono = telefono;
     this.email = email;
-    this.logId = logId;
+    this.LogId = logId;
   }
 
 
@@ -94,10 +94,10 @@ public class Funcionario {
   }
 
   public Integer getLogId() {
-    return logId;
+    return LogId;
   }
 
   public void setLogId(Integer logId) {
-    this.logId = logId;
+    this.LogId = logId;
   }
 }
