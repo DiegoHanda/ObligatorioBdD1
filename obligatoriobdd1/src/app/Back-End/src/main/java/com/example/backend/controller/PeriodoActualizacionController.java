@@ -24,7 +24,7 @@ public class PeriodoActualizacionController {
   }
 
   @PutMapping("/periodos_actualizacion")
-  public ResponseEntity<PeriodoActualizacion> modificarUltimoPeriodo(@RequestBody PeriodoActualizacionDTO pNuevo) {
+  public ResponseEntity<PeriodoActualizacion> modificarUltimoPeriodo(PeriodoActualizacionDTO pNuevo) {
 
     Optional<PeriodoActualizacion> optionalPeriodo = periodoActualizacionRepository.findTopByOrderByFchInicioDesc();
 

@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5e1fcdc-9f15-4ff1-8d01-5ef0bc201a4e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e5e9714d-121e-4dc4-ad91-01da3a121ebc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e5e9714d-121e-4dc4-ad91-01da3a121ebc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obligatoriobdd1/src/app/Back-End/src/main/java/com/example/backend/BackEndApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/obligatoriobdd1/src/app/Back-End/src/main/java/com/example/backend/BackEndApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obligatoriobdd1/src/app/Back-End/src/main/java/com/example/backend/repository/FuncionarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/obligatoriobdd1/src/app/Back-End/src/main/java/com/example/backend/repository/FuncionarioRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obligatoriobdd1/src/app/Back-End/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/obligatoriobdd1/src/app/Back-End/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,10 +23,10 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": -1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: -1
+}</component>
   <component name="ProjectId" id="2YEq4rwfQkKlOCqSpoyvFYAnctL" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -33,6 +38,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "panchei",
+    "last_opened_file_path": "C:/Users/franc/OneDrive/Escritorio/segundo/basededatos/OligatorioBdD1/obligatoriobdd1/src/app/Back-End",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -54,6 +60,8 @@
       <option name="presentableId" value="Default" />
       <updated>1700100900674</updated>
       <workItem from="1700100904560" duration="1376000" />
+      <workItem from="1700164027076" duration="253000" />
+      <workItem from="1700164292600" duration="3012000" />
     </task>
     <servers />
   </component>

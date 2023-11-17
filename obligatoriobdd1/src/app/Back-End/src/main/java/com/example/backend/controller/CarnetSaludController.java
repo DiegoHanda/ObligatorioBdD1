@@ -4,6 +4,7 @@ import com.example.backend.model.CarnetSalud;
 import com.example.backend.repository.CarnetSaludRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,7 +22,7 @@ public class CarnetSaludController {
   }
 
    @PostMapping("/carnet_salud")
-  public Carnet crearCarnet(@RequestBody Carnet carnet) {
+  public CarnetSalud crearCarnet(CarnetSalud carnet) {
     return carnetSaludRepository.save(carnet);
   }
 }
