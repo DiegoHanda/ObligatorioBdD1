@@ -12,6 +12,8 @@ export class PeriodoActualizacionService {
   constructor(private http: HttpClient) { }
 
   modificarPeriodo(pA: PeriodoActualizacion): Observable<Object> {
-    return this.http.put('${this.apiUrl}/${id}', pA);
+    console.log(pA);
+    console.log(pA.fchFin);
+    return this.http.put(this.apiUrl, pA);
   }
 }

@@ -33,6 +33,10 @@ export class RegisterComponent {
     this.funcionario = new Funcionario();
   }
 
+
+  //TERMINAR 
+  //HAY QUE VERIFICAR SI EL LOGID YA ESTÁ EN USO, LUEGO LA CI, Y LUEGO HACER LOS POSTS
+  //EN CASO DE TENER CARNET HACER SU POST SINO AGENDARSE
   onSubmit() {
     console.log(this.funcionario);
     this.saveFuncionario();

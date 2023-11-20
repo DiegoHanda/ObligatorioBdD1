@@ -22,6 +22,4 @@ public class CarnetSaludController {
   public CarnetSalud crearCarnet(@RequestBody CarnetSalud funcionario) {
     return carnetSaludRepository.save(funcionario);
   }
-
-
 }
