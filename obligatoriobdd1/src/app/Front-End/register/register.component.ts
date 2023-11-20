@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FuncionarioService } from '../Services/funcionario.service';
 import { Funcionario } from '../Models/funcionario';
 import { Carnet } from '../Models/carnet';
+import { CarnetService } from '../Services/Carnet.service';
 
 @Component({
   selector: 'app-register',
@@ -17,6 +18,7 @@ export class RegisterComponent {
 
   constructor(
     private funcionarioService: FuncionarioService,
+    private carnetService: CarnetService,
     private location: Location,
     private router: Router
   ) {}
@@ -33,9 +35,20 @@ export class RegisterComponent {
     this.funcionario = new Funcionario();
   }
 
+  saveCarnet() {
+    this.carnetService.crearCarnet(this.carnet).subscribe(
+      (data: any) => {
+        console.log(data), this.goHome();
+      },
+      (error: any) => console.log(error)
+    );
+    this.carnet = new Carnet();
+  }
+
   onSubmit() {
     console.log(this.funcionario);
     this.saveFuncionario();
+    this.saveCarnet();
     alert('Registro Completado');
   }
   toggleInputs(value: boolean): void {
