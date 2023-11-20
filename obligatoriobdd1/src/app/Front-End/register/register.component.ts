@@ -25,6 +25,8 @@ export class RegisterComponent {
 
   ngOnInit() {}
 
+  
+
   saveFuncionario() {
     this.funcionarioService.crearFuncionario(this.funcionario).subscribe(
       (data) => {
@@ -46,10 +48,15 @@ export class RegisterComponent {
   }
 
   onSubmit() {
-    console.log(this.funcionario);
-    this.saveFuncionario();
-    this.saveCarnet();
-    alert('Registro Completado');
+    if (this.isValidFile()) {
+      console.log(this.funcionario);
+      this.saveFuncionario();
+      this.saveCarnet();
+      this.funcionarioService.crearFuncionario(this.funcionario).subscribe();
+      alert('Registro Completado');
+    } else {
+      alert('Por favor, selecciona un archivo PDF o una imagen.');
+    }
   }
   toggleInputs(value: boolean): void {
     this.showInputs = value;
@@ -57,5 +64,22 @@ export class RegisterComponent {
 
   goHome() {
     this.router.navigate(['']);
+  }
+
+  private isValidFile(): boolean {
+    if (!this.showInputs) {
+      return true;
+    }
+    const fileExtension = this.getFileExtension(this.carnet.comprobante || '');
+    return fileExtension === 'pdf' || this.isImageExtension(fileExtension);
+  }
+
+  private getFileExtension(filename: string): string {
+    const parts = filename.split('.');
+    return parts[parts.length - 1].toLowerCase();
+  }
+
+  private isImageExtension(extension: string): boolean {
+    return ['jpg', 'jpeg', 'png', 'gif'].includes(extension);
   }
 }

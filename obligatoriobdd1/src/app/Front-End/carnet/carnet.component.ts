@@ -30,6 +30,21 @@ export class CarnetComponent {
     alert('Actualización Completada');
   }
 
+  onFileChange(event: any) {
+    const file = event.target.files[0];
+    const fileType = file.type;
+  
+    if (fileType !== 'application/pdf' && !fileType.startsWith('image/')) {
+      
+      alert('Por favor, selecciona un archivo PDF o una imagen.');
+      
+      this.carnet.comprobante = null;
+    } else {
+      
+      this.carnet.comprobante = file.name;
+    }
+  }
+
   toggleInputs(value: boolean): void {
     console.log(this.showInputs);
     this.showInputs = value;
