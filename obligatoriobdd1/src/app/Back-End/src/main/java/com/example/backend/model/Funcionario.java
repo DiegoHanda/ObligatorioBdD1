@@ -32,7 +32,7 @@ public class Funcionario {
   public Funcionario() {
   }
 
-  public Funcionario(Integer ci, String nombreCompleto, String apellido, Date fchNacimiento,
+  public Funcionario(Integer ci, String nombreCompleto, Date fchNacimiento,
                      String direccion, String telefono, String email, Integer logId) {
     super();
     this.ci = ci;

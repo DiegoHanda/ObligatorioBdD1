@@ -1,6 +1,7 @@
 package com.example.backend.controller;
 
 import com.example.backend.model.Login;
+import com.example.backend.repository.FuncionarioRepository;
 import com.example.backend.repository.LoginRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,6 +13,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1")
 public class LoginController {
+
+
   @Autowired
   private LoginRepository loginRepository;
 
@@ -30,6 +33,7 @@ public class LoginController {
   }
 
   @PostMapping("/loggear")
+
   public boolean iniciarSesion (@RequestBody Login login){
     if (loginRepository.existsByLogId(login.getLogId())){
       String passwFromDb = loginRepository.findPasswordById(login.getLogId());
