@@ -50,6 +50,7 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-mail</artifactId>
     </dependency>
+
     
     <dependency>
       <groupId>org.springframework.security</groupId>
@@ -61,7 +62,8 @@
       <artifactId>hibernate-core</artifactId>
       <version>6.2.13.Final</version>
     </dependency>
-  </dependencies>
+
+
 
   <build>
     <plugins>
