@@ -5,6 +5,7 @@ import { FuncionarioService } from '../Services/funcionario.service';
 import { Funcionario } from '../Models/funcionario';
 import { Carnet } from '../Models/carnet';
 import { CarnetService } from '../Services/Carnet.service';
+import { AgendaService } from '../Services/Agenda.service';
 
 @Component({
   selector: 'app-register',
@@ -15,15 +16,24 @@ export class RegisterComponent {
   funcionario: Funcionario = new Funcionario();
   carnet: Carnet = new Carnet();
   showInputs: boolean = false;
+  fechasDisponibles: Date[] = [];
 
   constructor(
     private funcionarioService: FuncionarioService,
     private carnetService: CarnetService,
     private location: Location,
+    private agendaService: AgendaService,
     private router: Router
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.agendaService.getFechasDisponibles().subscribe(
+      (fechas: Date[]) => {
+        this.fechasDisponibles = fechas;
+      },
+      (error) => console.log(error)
+    );
+  }
 
   
 
