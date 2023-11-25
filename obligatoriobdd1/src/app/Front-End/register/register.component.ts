@@ -5,6 +5,8 @@ import { FuncionarioService } from '../Services/funcionario.service';
 import { Funcionario } from '../Models/funcionario';
 import { Carnet } from '../Models/carnet';
 import { CarnetService } from '../Services/Carnet.service';
+import { AgendaService } from '../Services/Agenda.service';
+import { FileValidationService } from '../Services/filevalidation.service';
 
 @Component({
   selector: 'app-register',
@@ -15,15 +17,26 @@ export class RegisterComponent {
   funcionario: Funcionario = new Funcionario();
   carnet: Carnet = new Carnet();
   showInputs: boolean = false;
+  fechasDisponibles: Date[] = [];
 
   constructor(
     private funcionarioService: FuncionarioService,
     private carnetService: CarnetService,
     private location: Location,
-    private router: Router
+    private agendaService: AgendaService,
+    private router: Router,
+    private fileValidationService: FileValidationService
+
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.agendaService.getFechasDisponibles().subscribe(
+      (fechas: Date[]) => {
+        this.fechasDisponibles = fechas;
+      },
+      (error) => console.log(error)
+    );
+  }
 
   
 
@@ -48,7 +61,7 @@ export class RegisterComponent {
   }
 
   onSubmit() {
-    if (this.isValidFile()) {
+    if (this.fileValidationService.isValidFile(this.showInputs, this.carnet.comprobante)) {
       console.log(this.funcionario);
       this.saveFuncionario();
       this.saveCarnet();
@@ -66,20 +79,4 @@ export class RegisterComponent {
     this.router.navigate(['']);
   }
 
-  private isValidFile(): boolean {
-    if (!this.showInputs) {
-      return true;
-    }
-    const fileExtension = this.getFileExtension(this.carnet.comprobante || '');
-    return fileExtension === 'pdf' || this.isImageExtension(fileExtension);
-  }
-
-  private getFileExtension(filename: string): string {
-    const parts = filename.split('.');
-    return parts[parts.length - 1].toLowerCase();
-  }
-
-  private isImageExtension(extension: string): boolean {
-    return ['jpg', 'jpeg', 'png', 'gif'].includes(extension);
-  }
 }
