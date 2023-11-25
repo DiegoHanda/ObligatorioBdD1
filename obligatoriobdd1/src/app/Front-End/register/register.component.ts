@@ -24,7 +24,7 @@ export class RegisterComponent {
     private carnetService: CarnetService,
     private location: Location,
     private agendaService: AgendaService,
-    private router: Router
+    private router: Router,
     private fileValidationService: FileValidationService
 
   ) {}
