@@ -3,22 +3,32 @@
   id="container"
   [ngClass]="{ 'right-panel-active': overlayRight }"
 >
-  <div class="form-container sign-up-container">
-    <form (ngSubmit)="modificarPeriodo()" #periodForm="ngForm">
-      <h2>Modificar Fecha</h2>
-      <span>Modifique la Fecha de Finalización</span>
-      <input
-        type="date"
-        formControlName="fchFin"
-        [(ngModel)]="periodoActualizacion.fchFin"
-        placeholder="Nueva Fecha de Finalización"
-        class="form-control"
-        id="fchFin"
-        name="fchFin"
-      />
-      <button type="submit">Confirmar</button>
-    </form>
-  </div>
+<div class="form-container sign-in-container">
+  <form (ngSubmit)="logIn()" #loginForm="ngForm">
+    <h2>Iniciar Sesión</h2>
+    <span>Inicia Sesión Para Actualizar Tu Carnet</span>
+    <input
+      type="number"
+      placeholder="ID de Loggeo"
+      required="true"
+      class="form-control"
+      id="LogId"
+      [(ngModel)]="Login.logId"
+      name="LogId"
+    />
+    <input
+      type="password"
+      placeholder="Contraseña"
+      required="true"
+      class="form-control"
+      id="password"
+      [(ngModel)]="Login.password"
+      name="password"
+    />
+    <button type="submit">Iniciar Sesión</button>
+    <a href="register">Crea un nuevo usuario</a>
+  </form>
+</div>
   <div class="form-container sign-in-container">
     <form (ngSubmit)="logIn()" #loginForm="ngForm">
       <h2>Iniciar Sesión</h2>
