@@ -6,5 +6,4 @@ export class Funcionario {
     telefono!: string;
     email!: string;
     logId!: number;
-    fchAgenda!: Date;
 }

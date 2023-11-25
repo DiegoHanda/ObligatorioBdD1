@@ -11,7 +11,7 @@ export class AgendaService {
   constructor(private http: HttpClient) {}
 
   getFechasDisponibles(): Observable<Date[]> {
-    const url = `${this.apiUrl}/fechas-disponibles`;
+    const url = `${this.apiUrl}/agenda`;
     return this.http.get<Date[]>(url);
   }
 }
