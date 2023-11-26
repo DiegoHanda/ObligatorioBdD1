@@ -9,6 +9,7 @@ import { PeriodoActualizacionService } from '../Services/periodo-actualizacion.s
 })
 export class AdminComponent {
   periodoActualizacion: PeriodoActualizacion = new PeriodoActualizacion();
+  fechaFin: Date = new Date();
 
   constructor(private periodoActualizacionService: PeriodoActualizacionService){}
 
@@ -18,6 +19,8 @@ export class AdminComponent {
 
 
   modificarPeriodo() {
+    this.fechaFin = new Date(this.periodoActualizacion.fchFin);
+    console.log(this.fechaFin);
     console.log(this.periodoActualizacion);
     console.log(this.periodoActualizacion.fchFin);
     this.periodoActualizacionService.modificarPeriodo(this.periodoActualizacion).subscribe(
