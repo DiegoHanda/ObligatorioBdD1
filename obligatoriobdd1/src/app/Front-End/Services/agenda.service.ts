@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Agenda } from '../Models/agenda';
 
 @Injectable({
   providedIn: 'root',
@@ -11,8 +10,8 @@ export class AgendaService {
 
   constructor(private http: HttpClient) {}
 
-  getFechasDisponibles(): Observable<Agenda[]> {
+  getFechasDisponibles(): Observable<Date[]> {
     const url = `${this.apiUrl}/agenda`;
-    return this.http.get<Agenda[]>(url);
+    return this.http.get<Date[]>(url);
   }
 }
