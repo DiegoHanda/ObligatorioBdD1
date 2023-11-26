@@ -1,7 +1,10 @@
 package com.example.backend.controller;
 
+import com.example.backend.exception.ResourceNotFoundException;
 import com.example.backend.model.CarnetSalud;
 import com.example.backend.model.Funcionario;
+import com.example.backend.model.PeriodoActualizacion;
+import com.example.backend.model.PeriodoActualizacionDTO;
 import com.example.backend.repository.CarnetSaludRepository;
 import com.example.backend.repository.FuncionarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
 
 
+import java.sql.Date;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -44,6 +49,18 @@ public class CarnetSaludController {
     return carnetSaludRepository.save(funcionario);
   }
 
+  @PutMapping("/carnet_salud")
+  public ResponseEntity<CarnetSalud> modificarCarnet(@RequestBody CarnetSalud pNuevo) {
+    CarnetSalud cS=carnetSaludRepository.findByFuncionario(pNuevo.getFuncionario());
+    if (cS!=null) {
+      cS.setFchVencimiento(pNuevo.getFchVencimiento());
+      cS.setComprobante(pNuevo.getComprobante());
+      carnetSaludRepository.save(cS);
+      return new ResponseEntity<CarnetSalud>(cS,HttpStatus.CREATED);
+    } else {
+      return new ResponseEntity<CarnetSalud>(HttpStatus.CONFLICT);
+    }
+  }
 
 
 }
