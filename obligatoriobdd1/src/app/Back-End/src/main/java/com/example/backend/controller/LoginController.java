@@ -5,10 +5,10 @@ import com.example.backend.repository.FuncionarioRepository;
 import com.example.backend.repository.LoginRepository;
 import com.example.backend.service.EncryptServiceIMPLEMENT;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -28,9 +28,11 @@ private EncryptServiceIMPLEMENT encryptServiceIMPLEMENT;
   @PostMapping("/login")
   public ResponseEntity<Login> crearLogin(@RequestBody Login login) {
     if (loginRepository.existsByLogId(login.getLogId())) {
+      System.out.println("SE INTENTO CREAR UN LOGIN CON LOGID YA REGISTRADA!");
       return ResponseEntity.status(HttpStatus.CONFLICT).build();
     }
     Login createdLogin = encryptServiceIMPLEMENT.saveLoginHashed(login);
+
     return ResponseEntity.status(HttpStatus.CREATED).body(createdLogin);
   }
 
@@ -44,5 +46,20 @@ private EncryptServiceIMPLEMENT encryptServiceIMPLEMENT;
     }
     return false;
   }
+  @DeleteMapping("/login/{logid}")
+  public ResponseEntity<String> eliminarLogin(@PathVariable int logid) {
+    try {
+      loginRepository.eliminarPorLogID(logid);
+      return new ResponseEntity<>("Login eliminado correctamente", HttpStatus.OK);
+    } catch (EmptyResultDataAccessException e) {
+      return new ResponseEntity<>("No se encontró el login", HttpStatus.NOT_FOUND);
+    } catch (Exception e) {
+      return new ResponseEntity<>("Ocurrió un error al intentar eliminar el login", HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+  }
+
+
+
+
 }
 

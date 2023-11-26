@@ -8,10 +8,35 @@ import { HttpResponse } from '@angular/common/http';
   providedIn: 'root',
 })
 export class LogInServices {
+  private loginUrlCREARlogin = 'http://localhost:3036/api/v1/login';
   private loginUrlFuncionario = 'http://localhost:3036/api/v1/loggear';
   private loginUrlAdmin = 'http://localhost:3036/api/v1/adminlog';
 
   constructor(private http: HttpClient) {}
+
+   crearLogin(login:Login){
+    
+    return this.http.post<Login>(this.loginUrlCREARlogin, login)
+    .pipe(
+      catchError(error => {
+        console.error('Error:', error);
+        throw error;
+      })
+    );
+
+
+  }
+   deleteLogin(login:Login){
+    alert(this.loginUrlCREARlogin+"/"+login.logId);
+    return this.http.delete(this.loginUrlCREARlogin+"/"+login.logId).pipe(//VERIFICAR SI SE CONCATENA BIEN LA STRING
+      catchError((error) => {
+        alert("ERORRELIMINA");
+        console.error('Error:', error);
+        throw error;
+      })
+    );
+
+  }
 
   submitLoginFuncionario(Login: Login): Observable<object> {
     return this.http.post<Login>(this.loginUrlFuncionario, Login).pipe(
