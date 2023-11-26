@@ -3,6 +3,7 @@ package com.example.backend.controller;
 import com.example.backend.model.Login;
 import com.example.backend.repository.FuncionarioRepository;
 import com.example.backend.repository.LoginRepository;
+import com.example.backend.service.EncryptServiceIMPLEMENT;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +15,8 @@ import java.util.List;
 @RequestMapping("/api/v1")
 public class LoginController {
 
-
+@Autowired
+private EncryptServiceIMPLEMENT encryptServiceIMPLEMENT;
   @Autowired
   private LoginRepository loginRepository;
 
@@ -28,7 +30,7 @@ public class LoginController {
     if (loginRepository.existsByLogId(login.getLogId())) {
       return ResponseEntity.status(HttpStatus.CONFLICT).build();
     }
-    Login createdLogin = loginRepository.save(login);
+    Login createdLogin = encryptServiceIMPLEMENT.saveLoginHashed(login);
     return ResponseEntity.status(HttpStatus.CREATED).body(createdLogin);
   }
 
