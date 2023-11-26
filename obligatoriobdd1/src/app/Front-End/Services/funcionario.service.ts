@@ -21,7 +21,7 @@ export class FuncionarioService {
       );
   }
 
-  /*actualizarFuncionario(id:number, funcionario: Funcionario): Observable<Object> {
+  actualizarFuncionario(id:number, funcionario: Funcionario): Observable<Object> {
     return this.http.put('${this.apiUrl}/${id}', funcionario);
-  }*/
+  }
 }
