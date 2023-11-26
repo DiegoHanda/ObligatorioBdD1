@@ -1,0 +1,18 @@
+<div class="container" id="container">
+  <div class="form-container sign-up-container">
+    <form (ngSubmit)="modificarPeriodo()" #periodForm="ngForm">
+      <h2>Modificar Fecha</h2>
+      <span>Modifique la Fecha de Finalización</span>
+      <input
+        type="date"
+        formControlName="fchFin"
+        [(ngModel)]="periodoActualizacion.fchFin"
+        placeholder="Nueva Fecha de Finalización"
+        class="form-control"
+        id="fchFin"
+        name="fchFin"
+      />
+      <button type="submit">Confirmar</button>
+    </form>
+  </div>
+</div>

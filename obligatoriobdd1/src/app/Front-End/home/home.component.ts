@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
-import { PeriodoActualizacion } from '../Models/periodoActualizacion';
 import { Login } from '../Models/Login';
 import { LogInServices } from '../Services/home.service';
 
@@ -11,9 +10,8 @@ import { LogInServices } from '../Services/home.service';
 })
 export class HomeComponent {
   Login: Login = new Login();
-
   overlayRight: boolean = false;
-  periodoActualizacion: PeriodoActualizacion = new PeriodoActualizacion();
+
 
   constructor(private LoginService: LogInServices, private router: Router) {}
 
@@ -41,10 +39,4 @@ export class HomeComponent {
   toggleOverlay(): void {
     this.overlayRight = !this.overlayRight;
   }
-
-  actualizarFuncionario(id: number) {
-    this.router.navigate(['/actualizar-carnet', id]);
-  }
-
-  modificarPeriodo() {}
 }

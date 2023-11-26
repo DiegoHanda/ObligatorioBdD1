@@ -4,7 +4,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FuncionarioService } from '../Services/funcionario.service';
 import { Funcionario } from '../Models/funcionario';
 import { Carnet } from '../Models/carnet';
-import { CarnetService } from '../Services/Carnet.service';
+import { CarnetService } from '../Services/carnet.service';
+import { AgendaService } from '../Services/agenda.service';
+import { FileValidationService } from '../Services/filevalidation.service';
+import { Agenda } from '../Models/agenda';
 
 @Component({
   selector: 'app-register',
@@ -15,17 +18,30 @@ export class RegisterComponent {
   funcionario: Funcionario = new Funcionario();
   carnet: Carnet = new Carnet();
   showInputs: boolean = false;
+  fechasDisponibles: Agenda[] = [];
 
   constructor(
     private funcionarioService: FuncionarioService,
     private carnetService: CarnetService,
     private location: Location,
-    private router: Router
+    private agendaService: AgendaService,
+    private router: Router,
+    private fileValidationService: FileValidationService
+
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getDisponibles();
+  }
 
-  
+  getDisponibles() {
+    this.agendaService.getFechasDisponibles().subscribe(
+      (fechas: Agenda[]) => {
+        this.fechasDisponibles = fechas;
+      },
+      (error) => console.log(error)
+    );
+  }
 
   saveFuncionario() {
     this.funcionarioService.crearFuncionario(this.funcionario).subscribe(
@@ -37,6 +53,10 @@ export class RegisterComponent {
     this.funcionario = new Funcionario();
   }
 
+
+  //TERMINAR 
+  //HAY QUE VERIFICAR SI EL LOGID YA ESTÁ EN USO, LUEGO LA CI, Y LUEGO HACER LOS POSTS
+  //EN CASO DE TENER CARNET HACER SU POST SINO AGENDARSE
   saveCarnet() {
     this.carnetService.crearCarnet(this.carnet).subscribe(
       (data: any) => {
@@ -48,7 +68,7 @@ export class RegisterComponent {
   }
 
   onSubmit() {
-    if (this.isValidFile()) {
+    if (this.fileValidationService.isValidFile(this.showInputs, this.carnet.comprobante)) {
       console.log(this.funcionario);
       this.saveFuncionario();
       this.saveCarnet();
@@ -66,20 +86,4 @@ export class RegisterComponent {
     this.router.navigate(['']);
   }
 
-  private isValidFile(): boolean {
-    if (!this.showInputs) {
-      return true;
-    }
-    const fileExtension = this.getFileExtension(this.carnet.comprobante || '');
-    return fileExtension === 'pdf' || this.isImageExtension(fileExtension);
-  }
-
-  private getFileExtension(filename: string): string {
-    const parts = filename.split('.');
-    return parts[parts.length - 1].toLowerCase();
-  }
-
-  private isImageExtension(extension: string): boolean {
-    return ['jpg', 'jpeg', 'png', 'gif'].includes(extension);
-  }
 }

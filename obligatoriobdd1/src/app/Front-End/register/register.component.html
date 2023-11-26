@@ -29,6 +29,7 @@
         [(ngModel)]="funcionario.fchNacimiento"
         name="fchNacimiento"
       />
+
       <div class="radio-container">
         <label for="true">Tengo Carnet</label>
         <input
@@ -50,6 +51,7 @@
           checked
         />
       </div>
+
       <div *ngIf="showInputs">
         <input
           type="date"
@@ -70,6 +72,16 @@
           name="comprobante"
         />
       </div>
+
+      <div *ngIf="!showInputs">
+        <label for="fchAgenda">Selecciona una fecha de agenda:</label>
+        <select id="fchAgenda" name="fchAgenda" class="form-control" required>
+          <option *ngFor="let fecha of fechasDisponibles">
+            <h6>Fecha: {{ fecha.fchAgenda | date : "fullDate" }} - Nro: {{fecha.nro}}</h6>
+          </option>
+        </select>
+      </div>
+
       <input
         type="text"
         placeholder="Domicilio"

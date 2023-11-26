@@ -25,6 +25,7 @@ public class AgendaController {
     return agendaRepository.findAgendaDisponible();
   }
 
+
   @PutMapping("/agenda/{logId}")
   public ResponseEntity<String> actualizarAgenda(@RequestBody AgendaDTO agendaActualizada, @RequestParam int logId) {
 
