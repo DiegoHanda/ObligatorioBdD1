@@ -3,6 +3,24 @@
   <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
     <div class="form-group">
       <input
+        type="number"
+        placeholder="logId"
+        required="true"
+        class="form-control"
+        id="logId"
+        [(ngModel)]="login.logId"
+        name="logId"
+      />
+      <input
+        type="password"
+        placeholder="contraseña"
+        required="true"
+        class="form-control"
+        id="password"
+        [(ngModel)]="login.password"
+        name="password"
+      />
+      <input
         type="text"
         id="ci"
         placeholder="Cédula de Identidad"
@@ -109,15 +127,7 @@
         [(ngModel)]="funcionario.email"
         name="email"
       />
-      <input
-        type="number"
-        placeholder="logId"
-        required="true"
-        class="form-control"
-        id="logId"
-        [(ngModel)]="funcionario.logId"
-        name="logId"
-      />
+      
     </div>
     <button type="submit">Crear Cuenta</button>
   </form>
