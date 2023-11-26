@@ -10,4 +10,5 @@ import java.util.Optional;
 @Repository
 public interface PeriodoActualizacionRepository extends JpaRepository<PeriodoActualizacion, PeriodoActualizacionId> {
   Optional<PeriodoActualizacion> findTopByOrderByFchInicioDesc();
+
 }
