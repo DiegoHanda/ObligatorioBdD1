@@ -19,9 +19,12 @@ public class EncryptServiceIMPLEMENT implements EncryptService{
 
   @Override
   public Boolean verifyPassworf(String OGPassword, String hashPassword) {
-    return null;
+
+    return BCrypt.checkpw(OGPassword,hashPassword);
   }
   public Login saveLoginHashed(Login newLogin){
-    return this.loginRepository.save(newLogin);
+    Login hLogin=new Login(newLogin.getLogId(),this.encryptPassword(newLogin.getPassword()) );
+    System.out.println("LA PS es:"+ hLogin.getPassword());
+    return this.loginRepository.save(hLogin);
   }
 }
