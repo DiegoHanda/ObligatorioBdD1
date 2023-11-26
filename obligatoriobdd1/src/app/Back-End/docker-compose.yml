@@ -1,0 +1,20 @@
+version: '3.1'
+
+services:
+  db:
+    image: mysql:latest
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    volumes:  
+      - "./ScriptObligatorioBdD1.sql:/docker-entrypoint-initdb.d/1.sql"
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: bernardo
+
+  backend:
+    image: nombre-de-tu-imagen
+    ports:
+      - "3036:3036"
+    depends_on:
+      - db
