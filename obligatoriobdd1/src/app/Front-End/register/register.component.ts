@@ -5,7 +5,7 @@ import { FuncionarioService } from '../Services/funcionario.service';
 import { Funcionario } from '../Models/funcionario';
 import { Carnet } from '../Models/carnet';
 import { CarnetService } from '../Services/carnet.service';
-import { AgendaService } from '../Services/Agenda.service';
+import { AgendaService } from '../Services/agenda.service';
 import { FileValidationService } from '../Services/filevalidation.service';
 import { Agenda } from '../Models/agenda';
 import { Login } from '../Models/Login';

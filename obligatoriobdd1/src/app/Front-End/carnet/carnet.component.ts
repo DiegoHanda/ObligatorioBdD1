@@ -6,7 +6,7 @@ import { CarnetService } from '../Services/carnet.service';
 import { FileValidationService } from '../Services/filevalidation.service';
 import { FuncionarioService } from '../Services/funcionario.service';
 import { Agenda } from '../Models/agenda';
-import { AgendaService } from '../Services/Agenda.service';
+import { AgendaService } from '../Services/agenda.service';
 @Component({
   selector: 'app-carnet',
   templateUrl: './carnet.component.html',
