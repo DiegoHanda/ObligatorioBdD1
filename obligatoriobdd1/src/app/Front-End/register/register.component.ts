@@ -8,6 +8,9 @@ import { CarnetService } from '../Services/carnet.service';
 import { AgendaService } from '../Services/agenda.service';
 import { FileValidationService } from '../Services/filevalidation.service';
 import { Agenda } from '../Models/agenda';
+import { Login } from '../Models/Login';
+import { LogInServices } from '../Services/home.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -15,19 +18,20 @@ import { Agenda } from '../Models/agenda';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
+  login: Login = new Login();
   funcionario: Funcionario = new Funcionario();
   carnet: Carnet = new Carnet();
   showInputs: boolean = false;
   fechasDisponibles: Agenda[] = [];
 
   constructor(
+    private loginService: LogInServices,
     private funcionarioService: FuncionarioService,
     private carnetService: CarnetService,
     private location: Location,
     private agendaService: AgendaService,
     private router: Router,
     private fileValidationService: FileValidationService
-
   ) {}
 
   ngOnInit() {
@@ -43,7 +47,7 @@ export class RegisterComponent {
     );
   }
 
-  saveFuncionario() {
+ /*  saveFuncionario() {
     this.funcionarioService.crearFuncionario(this.funcionario).subscribe(
       (data) => {
         console.log(data), this.goHome();
@@ -51,10 +55,9 @@ export class RegisterComponent {
       (error) => console.log(error)
     );
     this.funcionario = new Funcionario();
-  }
+  } */
 
-
-  //TERMINAR 
+  //TERMINAR
   //HAY QUE VERIFICAR SI EL LOGID YA ESTÁ EN USO, LUEGO LA CI, Y LUEGO HACER LOS POSTS
   //EN CASO DE TENER CARNET HACER SU POST SINO AGENDARSE
   saveCarnet() {
@@ -66,9 +69,81 @@ export class RegisterComponent {
     );
     this.carnet = new Carnet();
   }
+  async saveLogin():Promise<boolean> {
+    try {
+      const response = await this.loginService.crearLogin(this.login).toPromise();
+      console.log('Response from server:', response);
+      if (response) {
+        //alert('(buen Login)');
+        this.funcionario.logId=this.login.logId;
+        return true;
+      } else {
+       // alert('Login MAl');
+        return false;
+      }
+    } catch (error) {
+      //alert('LOGINMALOOO');
+      console.error('Error:', error);
+      return false;
+    }
+  }
+  async saveFuncionario():Promise<boolean> {
+    try {
+      const response = await this.funcionarioService.crearFuncionario(this.funcionario).toPromise();
+      console.log('Response from server:', response);
+      if (response) {
+        //alert('(buen Login)');
+        return true;
+      } else {
+       // alert('Login MAl');
+        return false;
+      }
+    } catch (error) {
+      //alert('LOGINMALOOO');
+      console.error('Error:', error);
+      return false;
+    }
+  }
+  
 
-  onSubmit() {
-    if (this.fileValidationService.isValidFile(this.showInputs, this.carnet.comprobante)) {
+  async onSubmit() {
+    this.loginService.deleteLogin(this.login);
+    let vLogin:boolean=false;
+    let vFuncionario:boolean=false;
+    let vCarnet:boolean=false;
+    if(await this.saveLogin()){
+      vLogin=true;
+      //alert("registro login  Correcto")
+      if(await this.saveFuncionario()){
+        alert("registro funcionarioo correcto")
+      }
+      else{
+        this.loginService.deleteLogin(this.login);
+        alert("fallo registro funcionario")
+      }
+    }
+    else{
+      vLogin=false;
+      alert("FALLO LOGIN register")
+    }
+   /*  vFuncionario=await this.saveFuncionario();
+     try {
+      const resultado = await this.saveLogin();
+      if (resultado) {
+        vLogin=true
+        //alert("TODOOK")
+        // Hacer algo si el login es exitoso
+      } else {
+        vLogin=false
+        //alert("NADA OK")
+        // Hacer algo si el login falla
+      }
+    } catch (error) {
+      alert("BUUU")
+      // Manejar errores si ocurren durante el login
+    } */
+    //alert("func::: "+vFuncionario);
+    /* if (this.fileValidationService.isValidFile(this.showInputs, this.carnet.comprobante)) {
       console.log(this.funcionario);
       this.saveFuncionario();
       this.saveCarnet();
@@ -76,7 +151,7 @@ export class RegisterComponent {
       alert('Registro Completado');
     } else {
       alert('Por favor, selecciona un archivo PDF o una imagen.');
-    }
+    } */
   }
   toggleInputs(value: boolean): void {
     this.showInputs = value;
@@ -85,5 +160,4 @@ export class RegisterComponent {
   goHome() {
     this.router.navigate(['']);
   }
-
 }
