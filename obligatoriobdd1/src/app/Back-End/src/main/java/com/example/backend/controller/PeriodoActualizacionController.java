@@ -31,7 +31,7 @@ public class PeriodoActualizacionController {
     if (optionalPeriodo.isPresent()) {
       PeriodoActualizacion ultimoPeriodo = optionalPeriodo.get();
 
-      PeriodoActualizacion nuevoPeriodo = new PeriodoActualizacion(pNuevo.getAño(), pNuevo.getSemestre(), Date.valueOf(pNuevo.getFchInicio()), Date.valueOf(pNuevo.getFchFin()));
+      PeriodoActualizacion nuevoPeriodo = new PeriodoActualizacion(ultimoPeriodo.getAño(), ultimoPeriodo.getSemestre(), ultimoPeriodo.getFchInicio(), Date.valueOf(pNuevo.getFchFin()));
       periodoActualizacionRepository.delete(ultimoPeriodo);
       PeriodoActualizacion pModificado = periodoActualizacionRepository.save(nuevoPeriodo);
 
