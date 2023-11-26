@@ -61,15 +61,27 @@
           name="fchVencimiento"
         />
         <input
-        type="file"
-        placeholder="Imagen del Comprobante"
-        required="true"
-        class="form-control"
-        id="comprobante"
-        [(ngModel)]="carnet.comprobante"
-        name="comprobante"
-        (change)="onFileChange($event)"
-      />
+          type="file"
+          placeholder="Imagen del Comprobante"
+          required="true"
+          class="form-control"
+          id="comprobante"
+          [(ngModel)]="carnet.comprobante"
+          name="comprobante"
+          (change)="onFileChange($event)"
+        />
+
+        <div *ngIf="!showInputs">
+          <label for="fchAgenda">Selecciona una fecha de agenda:</label>
+          <select id="fchAgenda" name="fchAgenda" class="form-control" required>
+            <option *ngFor="let fecha of fechasDisponibles">
+              <h6>
+                Fecha: {{ fecha.fchAgenda | date : "fullDate" }} - Nro:
+                {{ fecha.nro }}
+              </h6>
+            </option>
+          </select>
+        </div>
       </div>
     </div>
     <button type="submit">Crear Cuenta</button>

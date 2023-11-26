@@ -11,6 +11,8 @@ import { AppComponent } from './app.component';
 import { CarnetComponent } from './carnet/carnet.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
+import { AgendaComponent } from './agenda/agenda.component';
+import { AdminComponent } from './admin/admin.component';
 
 
 @NgModule({
@@ -19,6 +21,8 @@ import { RegisterComponent } from './register/register.component';
     CarnetComponent,
     HomeComponent,
     RegisterComponent,
+    AgendaComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
