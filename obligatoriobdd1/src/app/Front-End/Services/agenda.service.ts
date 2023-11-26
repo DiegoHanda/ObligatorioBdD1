@@ -8,10 +8,10 @@ import { Agenda } from '../Models/agenda';
 })
 export class AgendaService {
   private apiUrl = "http://localhost:3036/api/v1/agenda"; 
-
+  
   constructor(private http: HttpClient) {}
 
   getFechasDisponibles(): Observable<Agenda[]> {
     return this.http.get<Agenda[]>(this.apiUrl);
   }
-}
+  }
