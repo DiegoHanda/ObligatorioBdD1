@@ -27,10 +27,10 @@ export class LogInServices {
 
   }
    deleteLogin(login:Login){
-    alert(this.loginUrlCREARlogin+"/"+login.logId);
-    return this.http.delete(this.loginUrlCREARlogin+"/"+login.logId).pipe(//VERIFICAR SI SE CONCATENA BIEN LA STRING
+   // alert(this.loginUrlCREARlogin+"/"+login.logId);
+    return this.http.delete(this.loginUrlCREARlogin+"/"+login.logId).pipe(
       catchError((error) => {
-        alert("ERORRELIMINA");
+        alert("ERORR ELIMINAndo login");
         console.error('Error:', error);
         throw error;
       })

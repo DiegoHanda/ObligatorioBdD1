@@ -25,7 +25,8 @@ export class HomeComponent {
       (response) => {
         console.log('Response from server:', response);
         if (response) {
-          this.router.navigate(['/actualizar-carnet/:id'], navigationExtras);
+          //this.router.navigate(['/actualizar-carnet/:id'], navigationExtras);
+          this.router.navigate(['admin/:id'], navigationExtras);
         } else {
           alert('LA CONTRASEÑA O USUARIO NO COINCIDEN');
         }
