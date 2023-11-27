@@ -18,6 +18,7 @@ export class CarnetComponent {
   carnet: Carnet = new Carnet();
   id!: number;
   fechasDisponibles: Agenda[] = [];
+  selectedAgenda: Agenda = new Agenda();
 
   constructor(
     private router: Router,
@@ -29,28 +30,52 @@ export class CarnetComponent {
   ) {}
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
+    this.route.queryParams.subscribe((params) => {
       this.id = +params['id'];
     });
     console.log(this.id);
     this.getDisponibles();
   }
   onSubmit() {
-    //Verificar si ya tiene carnet en la bd, si tiene modificarlo(PUT), sino crearlo(POST)
-    //En caso de no tener carnet para ingresar, agendar(PUT de agenda)
-    if (
-      this.fileValidationService.isValidFile(
-        this.showInputs,
-        this.carnet.comprobante
-      )
-    ) {
-      this.saveCarnet();
-      alert('Actualización Completada');
+
+    if (this.showInputs) {
+      if (
+        this.fileValidationService.isValidFile(
+          this.showInputs,
+          this.carnet.comprobante
+        )
+      ) {
+        this.saveCarnet();
+        alert('Actualización Completada');
+      } else {
+        alert('Por favor, selecciona un archivo PDF o una imagen.');
+      }
     } else {
-      alert('Por favor, selecciona un archivo PDF o una imagen.');
+      this.saveAgenda();
     }
   }
+    
+  
 
+  saveAgenda() {
+    this.selectedAgenda.ci = 0;
+    this.agendaService
+      .actualizarAgenda(
+        this.id,
+        new Agenda(
+          this.selectedAgenda.nro,
+          this.selectedAgenda.ci,
+          this.selectedAgenda.fchAgenda
+        )
+      )
+      .subscribe(
+        (data) => {
+          alert('Agendado');
+          this.goHome();
+        },
+        (error) => alert('Hubo un error al agendarse')
+      );
+  }
 
   saveCarnet() {
     console.log(this.carnet.comprobante);

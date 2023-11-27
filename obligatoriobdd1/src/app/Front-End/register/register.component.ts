@@ -1,16 +1,13 @@
 import { Component } from '@angular/core';
-import { Location } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { FuncionarioService } from '../Services/funcionario.service';
 import { Funcionario } from '../Models/funcionario';
 import { Carnet } from '../Models/carnet';
 import { CarnetService } from '../Services/carnet.service';
 import { AgendaService } from '../Services/agenda.service';
-import { FileValidationService } from '../Services/filevalidation.service';
 import { Agenda } from '../Models/agenda';
 import { Login } from '../Models/Login';
 import { LogInServices } from '../Services/home.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -29,10 +26,8 @@ export class RegisterComponent {
     private loginService: LogInServices,
     private funcionarioService: FuncionarioService,
     private carnetService: CarnetService,
-    private location: Location,
     private agendaService: AgendaService,
-    private router: Router,
-    private fileValidationService: FileValidationService
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -54,24 +49,7 @@ export class RegisterComponent {
         if (this.showInputs) {
           this.saveCarnet();
         } else {
-          console.log('hola');
-          this.selectedAgenda.ci = 0;
-          this.agendaService
-            .actualizarAgenda(
-              this.login.logId,
-              new Agenda(
-                this.selectedAgenda.nro,
-                this.selectedAgenda.ci,
-                this.selectedAgenda.fchAgenda
-              )
-            )
-            .subscribe(
-              (data) => {
-                alert('Agendado');
-                this.goHome();
-              },
-              (error) => alert('Hubo un error al agendarse')
-            );
+          this.saveAgenda();
         }
       },
       (error) => {
@@ -81,6 +59,25 @@ export class RegisterComponent {
     this.funcionario = new Funcionario();
   }
 
+  saveAgenda() {
+    this.selectedAgenda.ci = 0;
+    this.agendaService
+      .actualizarAgenda(
+        this.login.logId,
+        new Agenda(
+          this.selectedAgenda.nro,
+          this.selectedAgenda.ci,
+          this.selectedAgenda.fchAgenda
+        )
+      )
+      .subscribe(
+        (data) => {
+          alert('Agendado');
+          this.goHome();
+        },
+        (error) => alert('Hubo un error al agendarse')
+      );
+  }
   saveCarnet() {
     console.log(this.carnet.comprobante);
     this.carnetService
