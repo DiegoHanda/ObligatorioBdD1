@@ -7,12 +7,11 @@ import { Agenda } from '../Models/agenda';
   providedIn: 'root',
 })
 export class AgendaService {
-  private apiUrl = "http://localhost:3036/api/v1/carnet_salud"; 
-
+  private apiUrl = "http://localhost:3036/api/v1/agenda"; 
+  
   constructor(private http: HttpClient) {}
 
   getFechasDisponibles(): Observable<Agenda[]> {
-    const url = `${this.apiUrl}/agenda`;
-    return this.http.get<Agenda[]>(url);
+    return this.http.get<Agenda[]>(this.apiUrl);
   }
-}
+  }

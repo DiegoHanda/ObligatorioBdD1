@@ -106,11 +106,12 @@ export class RegisterComponent {
       vLogin=true;
       alert("registro login  Correcto")
       if(await this.saveFuncionario()){
+        vFuncionario=true;
         alert("registro funcionarioo correcto")
       }
       else{
-        this.loginService.deleteLogin(this.login);
-        alert("fallo registro funcionario")
+        //this.loginService.deleteLogin(this.login);
+        alert("fallofuncionario")
       }
     }
     else{
