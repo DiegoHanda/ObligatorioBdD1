@@ -23,9 +23,8 @@ export class HomeComponent {
 
   async logIn() {
     if ((await this.periodoActualizacionService.estamosEnPeriodo()) == false) {
-      alert('NO PUEDES INGRESAR PORQUE NO HAY PERIODO ACTIVO');
+      alert('El Período ha Finalizado');
     } else {
-      alert('PERIODO ACTIVO');
       let navigationExtras: NavigationExtras = {
         queryParams: { id: this.Login.logId },
       };
@@ -35,7 +34,7 @@ export class HomeComponent {
           if (response) {
             this.router.navigate(['/actualizar-carnet/:id'], navigationExtras);
           } else {
-            alert('LA CONTRASEÑA O USUARIO NO COINCIDEN');
+            alert('Usuario o Contraseña Incorrectos');
           }
         },
         (error) => {
@@ -54,7 +53,7 @@ export class HomeComponent {
         if (response) {
           this.router.navigate(['admin/:id'], navigationExtras);
         } else {
-          alert('LA CONTRASEÑA O USUARIO NO COINCIDEN');
+          alert('Usuario o Contraseña Incorrectos');
         }
       },
       (error) => {
@@ -69,7 +68,7 @@ export class HomeComponent {
 
   async enPeriodo() {
     if ((await this.periodoActualizacionService.estamosEnPeriodo()) == false) {
-      alert('NO PUEDES INGRESAR PORQUE NO HAY PERIODO ACTIVO');
+      alert('El Período ha Finalizado');
     } else {
       this.router.navigate(['register']);
     }

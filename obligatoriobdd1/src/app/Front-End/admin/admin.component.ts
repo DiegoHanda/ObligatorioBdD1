@@ -8,7 +8,7 @@ import { PeriodoActualizacionService } from '../Services/periodo-actualizacion.s
   styleUrls: ['./admin.component.css'],
 })
 export class AdminComponent {
-  date1: string = 'yyyy-mm-dd';
+  date: string = 'yyyy-mm-dd';
 
   periodoActualizacion: PeriodoActualizacion = new PeriodoActualizacion();
   fechaFin: Date = new Date();
@@ -18,12 +18,9 @@ export class AdminComponent {
   ) {}
 
   ngOnInit(): void {}
-  /* onFechaChange(date:Date|null){
-    this.date1= date
-  } */
 
   modificarPeriodo() {
-    this.periodoActualizacion.fchFin = new Date(this.date1);
+    this.periodoActualizacion.fchFin = new Date(this.date);
     this.periodoActualizacionService
       .modificarPeriodo(this.periodoActualizacion)
       .subscribe(

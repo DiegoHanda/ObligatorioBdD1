@@ -27,7 +27,7 @@ export class LogInServices {
     // alert(this.loginUrlCREARlogin+"/"+login.logId);
     return this.http.delete(this.loginUrlCREARlogin + '/' + login.logId).pipe(
       catchError((error) => {
-        alert('ERORR ELIMINAndo login');
+        alert('Error Eliminando Login');
         console.error('Error:', error);
         throw error;
       })

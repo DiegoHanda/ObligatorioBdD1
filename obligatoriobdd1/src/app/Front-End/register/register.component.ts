@@ -102,7 +102,7 @@ export class RegisterComponent {
       (data: any) => {
         this.saveFuncionario();
       },
-      (error: any) => alert('Hubo un error en saveLogin')
+      (error: any) => alert('Hubo un error al crear el login')
     );
   }
 
@@ -127,12 +127,9 @@ export class RegisterComponent {
       .checkCIFuncionario(this.funcionario.ci)
       .subscribe((checkCI: any) => {
         if (checkCI) {
-          alert('Ya existe un funcionario con ese CI');
+          alert('Ya existe un funcionario con esa cédula');
         } else {
-          //Llamar crear Login
-          //Llamar crear Funcionario
           this.saveLogin();
-          /**/
         }
       });
   }
