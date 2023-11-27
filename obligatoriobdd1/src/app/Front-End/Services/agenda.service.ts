@@ -16,6 +16,8 @@ export class AgendaService {
   }
 
   actualizarAgenda(logId: number, agenda: Agenda): Observable<Object> {
+    console.log(logId)
+    console.log(agenda)
     return this.http.put(`${this.apiUrl}/${logId}`, agenda);
   }
 }

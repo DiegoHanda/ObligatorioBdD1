@@ -39,10 +39,6 @@ export class RegisterComponent {
     this.getDisponibles();
   }
 
-  onSelectChange(deviceValue: any) {
-    console.log(deviceValue.value);
-  }
-
   getDisponibles() {
     this.agendaService.getFechasDisponibles().subscribe(
       (fechas: Agenda[]) => {
@@ -58,13 +54,17 @@ export class RegisterComponent {
         if (this.showInputs) {
           this.saveCarnet();
         } else {
-          console.log(this.login.logId);
-          console.log(this.selectedAgenda);
-          console.log(this.selectedAgenda.fchAgenda);
-          console.log(this.selectedAgenda.nro);
-          console.log(this.selectedAgenda.ci);
+          console.log('hola');
+          this.selectedAgenda.ci = 0;
           this.agendaService
-            .actualizarAgenda(this.login.logId, this.selectedAgenda)
+            .actualizarAgenda(
+              this.login.logId,
+              new Agenda(
+                this.selectedAgenda.nro,
+                this.selectedAgenda.ci,
+                this.selectedAgenda.fchAgenda
+              )
+            )
             .subscribe(
               (data) => {
                 alert('Agendado');
@@ -82,13 +82,22 @@ export class RegisterComponent {
   }
 
   saveCarnet() {
-    this.carnetService.crearCarnet(this.carnet).subscribe(
-      (data: any) => {
-        console.log(data), this.goHome();
-      },
-      (error: any) => console.log(error)
-    );
-    this.carnet = new Carnet();
+    console.log(this.carnet.comprobante);
+    this.carnetService
+      .crearCarnet(
+        new Carnet(this.carnet.fchVencimiento, this.carnet.comprobante),
+        this.login.logId
+      )
+      .subscribe(
+        (data: any) => {
+          console.log(data), this.goHome();
+          this.carnet = new Carnet();
+        },
+        (error: any) => {
+          console.log(error);
+          this.carnet = new Carnet();
+        }
+      );
   }
   saveLogin() {
     this.login.logId = this.funcionario.logId;

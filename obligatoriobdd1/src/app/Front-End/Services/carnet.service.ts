@@ -11,8 +11,8 @@ export class CarnetService {
 
   constructor(private http: HttpClient) {}
 
-  crearCarnet(carnet: Carnet): Observable<Object> {
-    return this.http.post<Carnet>(this.apiUrl, carnet).pipe(
+  crearCarnet(carnet: Carnet, logId: number): Observable<Object> {
+    return this.http.post<Carnet>(`${this.apiUrl}/${logId}`, carnet).pipe(
       catchError((error) => {
         console.error('Error:', error);
         throw error;

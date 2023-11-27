@@ -94,16 +94,15 @@
       <div *ngIf="!showInputs">
         <label for="fchAgenda">Selecciona una fecha de agenda:</label>
         <select
-          #agendas
           id="fchAgenda"
-          (change)="onSelectChange(agendas)"
           name="fchAgenda"
           class="form-control"
           required
+          [(ngModel)]="selectedAgenda"
         >
           <option
             *ngFor="let fecha of fechasDisponibles"
-            value="{{ fecha.nro }}//{{ fecha.fchAgenda }}"
+            [ngValue]="fecha"
           >
             <h6>
               Fecha: {{ fecha.fchAgenda | date : "fullDate" }} - Nro:

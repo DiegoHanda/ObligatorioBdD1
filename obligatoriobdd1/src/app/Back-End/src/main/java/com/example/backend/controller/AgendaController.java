@@ -27,10 +27,10 @@ public class AgendaController {
 
 
   @PutMapping("/agenda/{logId}")
-  public ResponseEntity<String> actualizarAgenda(@RequestBody AgendaDTO agendaActualizada, @RequestParam int logId) {
+  public Agenda actualizarAgenda(@RequestBody AgendaDTO agendaActualizada, @PathVariable("logId") int logId) {
 
     if (!funcionarioRepository.existsByLogId(logId)) {
-      return ResponseEntity.status(HttpStatus.NOT_FOUND).body("El Funcionario no existe");
+      return null;
     }
     AgendaId id = new AgendaId(agendaActualizada.getNro(), Date.valueOf(agendaActualizada.getFchAgenda()));
     if (agendaRepository.existsById(id)) {
@@ -39,11 +39,10 @@ public class AgendaController {
       Funcionario funcionario = funcionarioRepository.findFuncionarioByLogId(logId);
 
       agendaExistente.setFuncionario(funcionario);
-      agendaRepository.save(agendaExistente);
-      return ResponseEntity.ok("Agenda actualizada correctamente");
+      return agendaRepository.save(agendaExistente);
     } else {
       // La agenda no existe
-      return ResponseEntity.status(HttpStatus.NOT_FOUND).body("La agenda no existe");
+      return null;
     }
   }
 }

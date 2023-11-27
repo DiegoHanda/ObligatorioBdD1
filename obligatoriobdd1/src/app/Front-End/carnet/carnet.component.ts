@@ -29,7 +29,10 @@ export class CarnetComponent {
   ) {}
 
   ngOnInit() {
-    this.id = this.route.snapshot.params['id'];
+    this.route.queryParams.subscribe(params => {
+      this.id = +params['id'];
+    });
+    console.log(this.id);
     this.getDisponibles();
   }
   onSubmit() {
@@ -41,11 +44,31 @@ export class CarnetComponent {
         this.carnet.comprobante
       )
     ) {
-      this.funcionarioService.actualizarFuncionario(this.id, this.funcionario);
+      this.saveCarnet();
       alert('Actualización Completada');
     } else {
       alert('Por favor, selecciona un archivo PDF o una imagen.');
     }
+  }
+
+
+  saveCarnet() {
+    console.log(this.carnet.comprobante);
+    this.carnetService
+      .crearCarnet(
+        new Carnet(this.carnet.fchVencimiento, this.carnet.comprobante),
+        this.id
+      )
+      .subscribe(
+        (data: any) => {
+          console.log(data), this.goHome();
+          this.carnet = new Carnet();
+        },
+        (error: any) => {
+          console.log(error);
+          this.carnet = new Carnet();
+        }
+      );
   }
 
   onFileChange(event: any) {

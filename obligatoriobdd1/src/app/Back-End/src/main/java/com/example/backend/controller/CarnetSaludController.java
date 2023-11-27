@@ -45,9 +45,11 @@ public class CarnetSaludController {
     }
   }
 
-  @PostMapping("/carnet_salud")
-  public CarnetSalud crearCarnet(@RequestBody CarnetSalud funcionario) {
-    return carnetSaludRepository.save(funcionario);
+  @PostMapping("/carnet_salud/{logId}")
+  public CarnetSalud crearCarnet(@RequestBody CarnetSalud cS, @PathVariable("logId") int logId) {
+    Funcionario funcionario = funcionarioRepository.findFuncionarioByLogId(logId);
+    cS.setFuncionario(funcionario);
+    return carnetSaludRepository.save(cS);
   }
 
   @PutMapping("/carnet_salud")
