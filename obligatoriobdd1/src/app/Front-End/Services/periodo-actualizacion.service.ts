@@ -17,7 +17,7 @@ export class PeriodoActualizacionService {
     return this.http.put(this.apiUrl, pA);
   }
 
-  async estamosEnPeriodo2(): Promise<boolean> {
+  async estamosEnPeriodo(): Promise<boolean> {
     try {
       const response: PeriodoActualizacion[] | undefined = await this.http
         .get<PeriodoActualizacion[]>(this.apiUrl)

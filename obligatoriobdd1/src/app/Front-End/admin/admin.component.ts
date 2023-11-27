@@ -11,6 +11,7 @@ export class AdminComponent {
   date1:string="yyyy-mm-dd"
 
   periodoActualizacion: PeriodoActualizacion = new PeriodoActualizacion();
+  fechaFin: Date = new Date();
 
   constructor(
     private periodoActualizacionService: PeriodoActualizacionService
@@ -23,10 +24,6 @@ export class AdminComponent {
 
   modificarPeriodo() {
     this.periodoActualizacion.fchFin=new Date(this.date1);
-    /* alert(this.periodoActualizacion.fchFin);
-    alert(this.periodoActualizacion.semestre); */
-    console.log(this.periodoActualizacion);
-    console.log(this.periodoActualizacion.fchFin);
     this.periodoActualizacionService
       .modificarPeriodo(this.periodoActualizacion)
       .subscribe(

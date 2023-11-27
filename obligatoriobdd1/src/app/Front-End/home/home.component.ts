@@ -21,7 +21,7 @@ export class HomeComponent {
   ngOnInit(): void {}
 
   async logIn() {
-    if(await this.periodoActualizacionService.estamosEnPeriodo2()==false){
+    if(await this.periodoActualizacionService.estamosEnPeriodo()==false){
       alert("NO PUEDES INGRESAR PORQUE NO HAY PERIODO ACTIVO")
     }
     else{
@@ -76,7 +76,7 @@ export class HomeComponent {
   }
 
   async enPeriodo(){
-    if(await this.periodoActualizacionService.estamosEnPeriodo2()==false){
+    if(await this.periodoActualizacionService.estamosEnPeriodo()==false){
       alert("NO PUEDES INGRESAR PORQUE NO HAY PERIODO ACTIVO")
     } else {
       this.router.navigate(['register']);

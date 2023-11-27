@@ -56,4 +56,8 @@ export class LogInServices {
       })
     );
   }
+
+  checkLogID(id: number): Observable<Object> {
+    return this.http.get(`${this.loginUrlCREARlogin}/exists/${id}`);
+  }
 }

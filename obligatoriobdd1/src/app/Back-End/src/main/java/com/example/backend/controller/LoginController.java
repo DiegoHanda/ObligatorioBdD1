@@ -37,7 +37,6 @@ private EncryptServiceIMPLEMENT encryptServiceIMPLEMENT;
   }
 
   @PostMapping("/loggear")
-
   public boolean iniciarSesion (@RequestBody Login login){
     if (loginRepository.existsByLogId(login.getLogId())){
       String passwFromDb = loginRepository.findPasswordById(login.getLogId());
@@ -47,7 +46,6 @@ private EncryptServiceIMPLEMENT encryptServiceIMPLEMENT;
     return false;
   }
   @PostMapping("/loggear/Admin")
-
   public boolean iniciarSesionAdmin (@RequestBody Login login){
     if (login.getLogId()==0){
       String passwFromDb = loginRepository.findPasswordById(login.getLogId());
@@ -57,20 +55,10 @@ private EncryptServiceIMPLEMENT encryptServiceIMPLEMENT;
     return false;
   }
 
-  @DeleteMapping("/login/{logid}")
-  public ResponseEntity<String> eliminarLogin(@PathVariable int logid) {
-    try {
-      loginRepository.eliminarPorLogID(logid);
-      return new ResponseEntity<>("Login eliminado correctamente", HttpStatus.OK);
-    } catch (EmptyResultDataAccessException e) {
-      return new ResponseEntity<>("No se encontró el login", HttpStatus.NOT_FOUND);
-    } catch (Exception e) {
-      return new ResponseEntity<>("Ocurrió un error al intentar eliminar el login", HttpStatus.INTERNAL_SERVER_ERROR);
-    }
+  @GetMapping("/login/exists/{logid}")
+  public Boolean checkLogId(@PathVariable("logid") int logid) {
+    boolean result = loginRepository.existsByLogId(logid);
+    return result;
   }
-
-
-
-
 }
 
