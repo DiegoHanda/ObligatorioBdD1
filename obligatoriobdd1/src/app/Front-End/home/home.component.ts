@@ -33,8 +33,8 @@ export class HomeComponent {
             (response) => {
               console.log('Response from server:', response);
               if (response) {
-                //this.router.navigate(['/actualizar-carnet/:id'], navigationExtras);
-                this.router.navigate(['admin/:id'], navigationExtras);
+                this.router.navigate(['/actualizar-carnet/:id'], navigationExtras);
+                
               } else {
                 alert('LA CONTRASEÑA O USUARIO NO COINCIDEN');
               }
@@ -73,5 +73,13 @@ export class HomeComponent {
 
   toggleOverlay(): void {
     this.overlayRight = !this.overlayRight;
+  }
+
+  async enPeriodo(){
+    if(await this.periodoActualizacionService.estamosEnPeriodo2()==false){
+      alert("NO PUEDES INGRESAR PORQUE NO HAY PERIODO ACTIVO")
+    } else {
+      this.router.navigate(['register']);
+    }
   }
 }
