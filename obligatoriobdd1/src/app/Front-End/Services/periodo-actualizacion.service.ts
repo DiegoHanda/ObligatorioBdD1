@@ -44,7 +44,7 @@ export class PeriodoActualizacionService {
           fechActSTR
         );
         console.log(esMayorqueFINICIO, esMenorqueFINICIO);
-        return (esMayorqueFINICIO && esMenorqueFINICIO);
+        return esMayorqueFINICIO && esMenorqueFINICIO;
       }
     } catch (error) {}
 
@@ -65,8 +65,6 @@ export class PeriodoActualizacionService {
     const fecha1 = new Date(fechaStr1);
     const fecha2 = new Date(fechaStr2);
 
-   
-
     if (fecha1 > fecha2) {
       return true;
     } else if (fecha1 < fecha2) {
@@ -75,6 +73,4 @@ export class PeriodoActualizacionService {
       return false;
     }
   }
-
-
 }

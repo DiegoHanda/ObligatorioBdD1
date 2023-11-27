@@ -7,17 +7,16 @@ import { Carnet } from '../Models/carnet';
   providedIn: 'root',
 })
 export class CarnetService {
-  private apiUrl = "http://localhost:3036/api/v1/carnet_salud";
+  private apiUrl = 'http://localhost:3036/api/v1/carnet_salud';
 
   constructor(private http: HttpClient) {}
 
   crearCarnet(carnet: Carnet): Observable<Object> {
-    return this.http.post<Carnet>(this.apiUrl, carnet)
-      .pipe(
-        catchError(error => {
-          console.error('Error:', error);
-          throw error;
-        })
-      );
+    return this.http.post<Carnet>(this.apiUrl, carnet).pipe(
+      catchError((error) => {
+        console.error('Error:', error);
+        throw error;
+      })
+    );
   }
 }

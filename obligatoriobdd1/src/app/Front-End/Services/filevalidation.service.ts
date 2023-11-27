@@ -4,7 +4,10 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class FileValidationService {
-  isValidFile(showInputs: boolean, fileName: string | null | undefined): boolean {
+  isValidFile(
+    showInputs: boolean,
+    fileName: string | null | undefined
+  ): boolean {
     if (!showInputs || !fileName) {
       return true;
     }

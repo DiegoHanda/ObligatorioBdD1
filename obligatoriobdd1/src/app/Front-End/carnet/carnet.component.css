@@ -1,150 +1,147 @@
 .ng-valid[required],
 .ng-valid.required {
-    border-left: 5px solid #3e53ec;
+  border-left: 5px solid #3e53ec;
 }
 
 .ng-invalid:not(form) {
-    border-left: 5px solid  #2b44ff;
+  border-left: 5px solid #2b44ff;
 }
 
 .alert-danger {
-    background-color:  #2b44ff;
-    color: #fff;
-    padding: 10px;
-    border-radius: 5px;
-    margin-top: 10px;
+  background-color: #2b44ff;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
 }
 
 /* Styles for the container */
 .container {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-    position: relative;
-    overflow: hidden;
-    width: 768px;
-    max-width: 100%;
-    min-height: 480px;
-    padding: 0 50px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  position: relative;
+  overflow: hidden;
+  width: 768px;
+  max-width: 100%;
+  min-height: 480px;
+  padding: 0 50px;
 }
 
 /* Styles for the form title */
 h1 {
-    height: 3rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
-    margin: 0;
-    margin-bottom: 20px;
-    color: #ffffff;
-    background-color: #3e53ec;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  margin: 0;
+  margin-bottom: 20px;
+  color: #ffffff;
+  background-color: #3e53ec;
 }
 
 .container form {
-    padding: 20px;
+  padding: 20px;
 }
 
 /* Styles for the form sections */
 .form-section {
-    background-color: #fff;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Styles for the form labels */
 label {
-    font-weight: bold;
-    color:  #2b44ff;
-    display: block;
-    margin-bottom: 5px;
+  font-weight: bold;
+  color: #2b44ff;
+  display: block;
+  margin-bottom: 5px;
 }
 
-.form-group input{
-    display: flex;
-    width: 95%;
-    height: 100%;
-    overflow: auto;
+.form-group input {
+  display: flex;
+  width: 95%;
+  height: 100%;
+  overflow: auto;
 }
 
 /* Styles for the form inputs */
 .form-control {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    margin-bottom: 10px;
-    transition: border-color 0.2s;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  transition: border-color 0.2s;
 }
 
 /* Styles for the error messages */
 .alert-danger {
-    color: #ccc;
+  color: #ccc;
 }
 
 /* Styles for the buttons */
 .btn-success,
 .btn-default,
 .btn-primary {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 4px;
-    cursor: pointer;
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-
 .btn-success {
-    border-radius: 20px;
-    border: 1px solid #3e53ec;
-    background-color:  #2b44ff;
-    color: #FFFFFF;
-    font-size: 14px;
-    font-weight: bold;
-    padding: 12px 45px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: transform 80ms ease-in;
-    cursor: pointer;
+  border-radius: 20px;
+  border: 1px solid #3e53ec;
+  background-color: #2b44ff;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 12px 45px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
+  cursor: pointer;
 }
 
 .btn-success:hover {
-    background-color: #449d44;
+  background-color: #449d44;
 }
 
 .btn-default {
-    background-color: #fff;
-    color: #2b44ff;
-    border: 1px solid #ccc;
-    margin-right: 10px;
+  background-color: #fff;
+  color: #2b44ff;
+  border: 1px solid #ccc;
+  margin-right: 10px;
 }
 
 .btn-default:hover {
-    background-color: #eee;
+  background-color: #eee;
 }
-
 
 /* Additional styling for select element */
 .select-control {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    margin-bottom: 10px;
-    background-color: #fff;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  background-color: #fff;
 }
 .radio-container {
-	display: flex;
-	align-items: center;
-	margin: 8px;
-  }
-  
-  .radio-container label {
-	margin-right: 5px;
-  }
+  display: flex;
+  align-items: center;
+  margin: 8px;
+}
 
+.radio-container label {
+  margin-right: 5px;
+}

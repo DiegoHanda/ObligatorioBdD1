@@ -31,7 +31,6 @@ export class CarnetComponent {
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
     this.getDisponibles();
-
   }
   onSubmit() {
     //Verificar si ya tiene carnet en la bd, si tiene modificarlo(PUT), sino crearlo(POST)
