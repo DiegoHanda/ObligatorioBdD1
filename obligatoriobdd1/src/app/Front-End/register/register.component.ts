@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Injectable } from '@angular/core';
+
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FuncionarioService } from '../Services/funcionario.service';
@@ -26,18 +28,19 @@ export class RegisterComponent {
 
   constructor(
     private loginService: LogInServices,
+    private agendaService:AgendaService,
     private funcionarioService: FuncionarioService,
     private carnetService: CarnetService,
     private location: Location,
-    private agendaService: AgendaService,
+    //private agendaService: AgendaService,
     private router: Router,
     private fileValidationService: FileValidationService
   ) {}
 
-  ngOnInit() {
+   ngOnInit() {
     this.getDisponibles();
   }
-
+ 
   getDisponibles() {
     this.agendaService.getFechasDisponibles().subscribe(
       (fechas: Agenda[]) => {
@@ -47,19 +50,7 @@ export class RegisterComponent {
     );
   }
 
- /*  saveFuncionario() {
-    this.funcionarioService.crearFuncionario(this.funcionario).subscribe(
-      (data) => {
-        console.log(data), this.goHome();
-      },
-      (error) => console.log(error)
-    );
-    this.funcionario = new Funcionario();
-  } */
 
-  //TERMINAR
-  //HAY QUE VERIFICAR SI EL LOGID YA ESTÁ EN USO, LUEGO LA CI, Y LUEGO HACER LOS POSTS
-  //EN CASO DE TENER CARNET HACER SU POST SINO AGENDARSE
   saveCarnet() {
     this.carnetService.crearCarnet(this.carnet).subscribe(
       (data: any) => {
@@ -113,7 +104,7 @@ export class RegisterComponent {
     let vCarnet:boolean=false;
     if(await this.saveLogin()){
       vLogin=true;
-      //alert("registro login  Correcto")
+      alert("registro login  Correcto")
       if(await this.saveFuncionario()){
         vFuncionario=true;
         alert("registro funcionarioo correcto")

@@ -14,4 +14,4 @@ export class AgendaService {
   getFechasDisponibles(): Observable<Agenda[]> {
     return this.http.get<Agenda[]>(this.apiUrl);
   }
-  }
+}

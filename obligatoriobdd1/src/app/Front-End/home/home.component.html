@@ -3,10 +3,10 @@
   id="container"
   [ngClass]="{ 'right-panel-active': overlayRight }"
 >
-<div class="form-container sign-in-container">
-  <form (ngSubmit)="logIn()" #loginForm="ngForm">
-    <h2>Iniciar Sesión</h2>
-    <span>Inicia Sesión Para Actualizar Tu Carnet</span>
+<div class="form-container sign-up-container">
+  <form (ngSubmit)="logInAdmin()" #loginForm="ngForm">
+    <h2>Iniciar Sesión ADMIN</h2>
+    <span>Inicia Sesión Para Actualizar El Periodo </span>
     <input
       type="number"
       placeholder="ID de Loggeo"
@@ -26,7 +26,6 @@
       name="password"
     />
     <button type="submit">Iniciar Sesión</button>
-    <a href="register">Crea un nuevo usuario</a>
   </form>
 </div>
   <div class="form-container sign-in-container">
@@ -52,7 +51,7 @@
         name="password"
       />
       <button type="submit">Iniciar Sesión</button>
-      <a href="register">Crea un nuevo usuario</a>
+      <a (click)="enPeriodo()">Crea un nuevo usuario</a>
     </form>
   </div>
   <div class="overlay-container">

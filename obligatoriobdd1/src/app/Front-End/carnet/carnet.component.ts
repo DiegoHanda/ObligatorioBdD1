@@ -30,7 +30,7 @@ export class CarnetComponent {
 
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
-    this.getDisponibles();
+    //this.getDisponibles();
 
   }
   onSubmit() {
@@ -71,7 +71,7 @@ export class CarnetComponent {
   goHome() {
     this.router.navigate(['']);
   }
-
+/* 
   getDisponibles() {
     this.agendaService.getFechasDisponibles().subscribe(
       (fechas: Agenda[]) => {
@@ -79,5 +79,5 @@ export class CarnetComponent {
       },
       (error) => console.log(error)
     );
-  }
+  } */
 }

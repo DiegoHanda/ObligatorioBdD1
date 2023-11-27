@@ -4,14 +4,15 @@
       <h2>Modificar Fecha</h2>
       <span>Modifique la Fecha de Finalización</span>
       <input
-        type="date"
-        formControlName="fchFin"
-        [(ngModel)]="periodoActualizacion.fchFin"
-        placeholder="Nueva Fecha de Finalización"
+        type="string"
+        placeholder="yyy-mm-dd"
+        required="true"
         class="form-control"
-        id="fchFin"
-        name="fchFin"
+        id="fecha"
+        [(ngModel)]="this.date1"
+        name="fecha"
       />
+    
       <button type="submit">Confirmar</button>
     </form>
   </div>

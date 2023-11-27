@@ -46,6 +46,17 @@ private EncryptServiceIMPLEMENT encryptServiceIMPLEMENT;
     }
     return false;
   }
+  @PostMapping("/loggear/Admin")
+
+  public boolean iniciarSesionAdmin (@RequestBody Login login){
+    if (login.getLogId()==0){
+      String passwFromDb = loginRepository.findPasswordById(login.getLogId());
+      String inputPassw = login.getPassword();
+      return inputPassw.equals(passwFromDb);
+    }
+    return false;
+  }
+
   @DeleteMapping("/login/{logid}")
   public ResponseEntity<String> eliminarLogin(@PathVariable int logid) {
     try {
