@@ -16,12 +16,6 @@ export class PeriodoActualizacionService {
     console.log(pA.fchFin);
     return this.http.put(this.apiUrl, pA);
   }
-  estamosEnPeriodo(): boolean {
-    let siEstamos: boolean = false;
-   
-
-    return siEstamos;
-  }
 
   async estamosEnPeriodo2(): Promise<boolean> {
     try {
