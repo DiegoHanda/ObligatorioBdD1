@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { Injectable } from '@angular/core';
-
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FuncionarioService } from '../Services/funcionario.service';
@@ -25,22 +23,26 @@ export class RegisterComponent {
   carnet: Carnet = new Carnet();
   showInputs: boolean = false;
   fechasDisponibles: Agenda[] = [];
+  selectedAgenda: Agenda = new Agenda();
 
   constructor(
     private loginService: LogInServices,
-    private agendaService:AgendaService,
     private funcionarioService: FuncionarioService,
     private carnetService: CarnetService,
     private location: Location,
-    //private agendaService: AgendaService,
+    private agendaService: AgendaService,
     private router: Router,
     private fileValidationService: FileValidationService
   ) {}
 
-   ngOnInit() {
+  ngOnInit() {
     this.getDisponibles();
   }
- 
+
+  onSelectChange(deviceValue: any) {
+    console.log(deviceValue.value);
+  }
+
   getDisponibles() {
     this.agendaService.getFechasDisponibles().subscribe(
       (fechas: Agenda[]) => {
@@ -50,6 +52,34 @@ export class RegisterComponent {
     );
   }
 
+  saveFuncionario() {
+    this.funcionarioService.crearFuncionario(this.funcionario).subscribe(
+      (data) => {
+        if (this.showInputs) {
+          this.saveCarnet();
+        } else {
+          console.log(this.login.logId);
+          console.log(this.selectedAgenda);
+          console.log(this.selectedAgenda.fchAgenda);
+          console.log(this.selectedAgenda.nro);
+          console.log(this.selectedAgenda.ci);
+          this.agendaService
+            .actualizarAgenda(this.login.logId, this.selectedAgenda)
+            .subscribe(
+              (data) => {
+                alert('Agendado');
+                this.goHome();
+              },
+              (error) => alert('Hubo un error al agendarse')
+            );
+        }
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+    this.funcionario = new Funcionario();
+  }
 
   saveCarnet() {
     this.carnetService.crearCarnet(this.carnet).subscribe(
@@ -60,90 +90,45 @@ export class RegisterComponent {
     );
     this.carnet = new Carnet();
   }
-  async saveLogin():Promise<boolean> {
-    try {
-      const response = await this.loginService.crearLogin(this.login).toPromise();
-      console.log('Response from server:', response);
-      if (response) {
-        //alert('(buen Login)');
-        this.funcionario.logId=this.login.logId;
-        return true;
-      } else {
-       // alert('Login MAl');
-        return false;
-      }
-    } catch (error) {
-      //alert('LOGINMALOOO');
-      console.error('Error:', error);
-      return false;
-    }
+  saveLogin() {
+    this.login.logId = this.funcionario.logId;
+    this.loginService.crearLogin(this.login).subscribe(
+      (data: any) => {
+        this.saveFuncionario();
+      },
+      (error: any) => alert('Hubo un error en saveLogin')
+    );
   }
-  async saveFuncionario():Promise<boolean> {
-    try {
-      const response = await this.funcionarioService.crearFuncionario(this.funcionario).toPromise();
-      console.log('Response from server:', response);
-      if (response) {
-        //alert('(buen Login)');
-        return true;
-      } else {
-       // alert('Login MAl');
-        return false;
-      }
-    } catch (error) {
-      //alert('LOGINMALOOO');
-      console.error('Error:', error);
-      return false;
-    }
-  }
-  
 
-  async onSubmit() {
-    this.loginService.deleteLogin(this.login);
-    let vLogin:boolean=false;
-    let vFuncionario:boolean=false;
-    let vCarnet:boolean=false;
-    if(await this.saveLogin()){
-      vLogin=true;
-      alert("registro login  Correcto")
-      if(await this.saveFuncionario()){
-        vFuncionario=true;
-        alert("registro funcionarioo correcto")
-      }
-      else{
-        //this.loginService.deleteLogin(this.login);
-        alert("fallofuncionario")
-      }
-    }
-    else{
-      vLogin=false;
-      alert("FALLO LOGIN register")
-    }
-   /*  vFuncionario=await this.saveFuncionario();
-     try {
-      const resultado = await this.saveLogin();
-      if (resultado) {
-        vLogin=true
-        //alert("TODOOK")
-        // Hacer algo si el login es exitoso
-      } else {
-        vLogin=false
-        //alert("NADA OK")
-        // Hacer algo si el login falla
-      }
-    } catch (error) {
-      alert("BUUU")
-      // Manejar errores si ocurren durante el login
-    } */
-    //alert("func::: "+vFuncionario);
-    /* if (this.fileValidationService.isValidFile(this.showInputs, this.carnet.comprobante)) {
-      console.log(this.funcionario);
-      this.saveFuncionario();
-      this.saveCarnet();
-      this.funcionarioService.crearFuncionario(this.funcionario).subscribe();
-      alert('Registro Completado');
-    } else {
-      alert('Por favor, selecciona un archivo PDF o una imagen.');
-    } */
+  onSubmit() {
+    this.checkLogID();
+  }
+
+  checkLogID() {
+    this.loginService
+      .checkLogID(this.funcionario.logId)
+      .subscribe((checkLogId: any) => {
+        if (checkLogId) {
+          alert('Ya existe un funcionario con ese logID');
+        } else {
+          this.checkCIFuncionario();
+        }
+      });
+  }
+
+  checkCIFuncionario() {
+    this.funcionarioService
+      .checkCIFuncionario(this.funcionario.ci)
+      .subscribe((checkCI: any) => {
+        if (checkCI) {
+          alert('Ya existe un funcionario con ese CI');
+        } else {
+          //Llamar crear Login
+          //Llamar crear Funcionario
+          this.saveLogin();
+          /**/
+        }
+      });
   }
   toggleInputs(value: boolean): void {
     this.showInputs = value;

@@ -7,12 +7,15 @@ import { Agenda } from '../Models/agenda';
   providedIn: 'root',
 })
 export class AgendaService {
-  private apiUrl = "http://localhost:3036/api/v1/agenda"; 
-  
+  private apiUrl = 'http://localhost:3036/api/v1/agenda';
+
   constructor(private http: HttpClient) {}
 
   getFechasDisponibles(): Observable<Agenda[]> {
     return this.http.get<Agenda[]>(this.apiUrl);
   }
+
+  actualizarAgenda(logId: number, agenda: Agenda): Observable<Object> {
+    return this.http.put(`${this.apiUrl}/${logId}`, agenda);
+  }
 }
-//awdwa

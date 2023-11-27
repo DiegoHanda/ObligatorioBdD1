@@ -1,4 +1,4 @@
 export class Login {
-    logId!: number;
-    password!: string;
+  logId!: number;
+  password!: string;
 }

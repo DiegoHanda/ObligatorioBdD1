@@ -33,10 +33,11 @@ public class CarnetSaludController {
   public List<CarnetSalud> getAllCarnetSalud() {
     return carnetSaludRepository.findAll();
   }
+
   @GetMapping("/carnet_salud/{CI}")
-  public CarnetSalud getCarnetByCI(@PathVariable("CI") int CI){
-    Funcionario funcionario=funcionarioRepository.findFuncionarioByCi(CI);//CAMBIAR A POR CI
-    CarnetSalud cS= carnetSaludRepository.findByFuncionario(funcionario);
+  public CarnetSalud getCarnetByCI(@PathVariable("CI") int CI) {
+    Funcionario funcionario = funcionarioRepository.findFuncionarioByCi(CI);//CAMBIAR A POR CI
+    CarnetSalud cS = carnetSaludRepository.findByFuncionario(funcionario);
     if (cS != null) {
       return cS;
     } else {
@@ -51,12 +52,12 @@ public class CarnetSaludController {
 
   @PutMapping("/carnet_salud")
   public ResponseEntity<CarnetSalud> modificarCarnet(@RequestBody CarnetSalud pNuevo) {
-    CarnetSalud cS=carnetSaludRepository.findByFuncionario(pNuevo.getFuncionario());
-    if (cS!=null) {
+    CarnetSalud cS = carnetSaludRepository.findByFuncionario(pNuevo.getFuncionario());
+    if (cS != null) {
       cS.setFchVencimiento(pNuevo.getFchVencimiento());
       cS.setComprobante(pNuevo.getComprobante());
       carnetSaludRepository.save(cS);
-      return new ResponseEntity<CarnetSalud>(cS,HttpStatus.CREATED);
+      return new ResponseEntity<CarnetSalud>(cS, HttpStatus.CREATED);
     } else {
       return new ResponseEntity<CarnetSalud>(HttpStatus.CONFLICT);
     }

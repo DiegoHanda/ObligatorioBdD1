@@ -1,6 +1,6 @@
 export class PeriodoActualizacion {
-    año!: number;
-    semestre!: number;
-    fchInicio!: Date;
-    fchFin!: Date;
+  año!: number;
+  semestre!: number;
+  fchInicio!: Date;
+  fchFin!: Date;
 }

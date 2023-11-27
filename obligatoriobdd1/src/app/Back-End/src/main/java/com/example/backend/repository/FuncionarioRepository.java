@@ -18,7 +18,6 @@ public interface FuncionarioRepository extends JpaRepository <Funcionario, Integ
   @Query("SELECT COUNT(F) > 0 FROM Funcionario F WHERE F.ci = ?1")
   boolean existsByCi(int ci);
 
-
   @Query("SELECT COUNT(F) > 0 FROM Funcionario F WHERE F.LogId = ?1")
   boolean existsByLogId(int logId);
   Funcionario findFuncionarioByCi(int ci);

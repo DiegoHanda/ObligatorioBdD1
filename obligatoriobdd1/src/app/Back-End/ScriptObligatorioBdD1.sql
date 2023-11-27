@@ -1,4 +1,3 @@
-drop database ucucarnet;
 create database ucucarnet;
 use ucucarnet;
 
@@ -42,12 +41,6 @@ CREATE TABLE Periodos_Actualizacion (
     Fch_Inicio date,
     Fch_Fin date,
     PRIMARY KEY (Año, Semestre, Fch_Inicio, Fch_Fin)
-);
-
-CREATE TABLE Admin (
-    Ci int,
-    FOREIGN KEY (Ci) REFERENCES Funcionarios (Ci),
-    IsAdmin boolean PRIMARY KEY default FALSE
 );
 
 INSERT INTO Periodos_Actualizacion (Año, Semestre, Fch_Inicio, Fch_Fin)

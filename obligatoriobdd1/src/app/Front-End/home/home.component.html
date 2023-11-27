@@ -3,31 +3,31 @@
   id="container"
   [ngClass]="{ 'right-panel-active': overlayRight }"
 >
-<div class="form-container sign-up-container">
-  <form (ngSubmit)="logInAdmin()" #loginForm="ngForm">
-    <h2>Iniciar Sesión ADMIN</h2>
-    <span>Inicia Sesión Para Actualizar El Periodo </span>
-    <input
-      type="number"
-      placeholder="ID de Loggeo"
-      required="true"
-      class="form-control"
-      id="LogId"
-      [(ngModel)]="Login.logId"
-      name="LogId"
-    />
-    <input
-      type="password"
-      placeholder="Contraseña"
-      required="true"
-      class="form-control"
-      id="password"
-      [(ngModel)]="Login.password"
-      name="password"
-    />
-    <button type="submit">Iniciar Sesión</button>
-  </form>
-</div>
+  <div class="form-container sign-up-container">
+    <form (ngSubmit)="logInAdmin()" #loginForm="ngForm">
+      <h2>Iniciar Sesión ADMIN</h2>
+      <span>Inicia Sesión Para Actualizar El Periodo </span>
+      <input
+        type="number"
+        placeholder="ID de Loggeo"
+        required="true"
+        class="form-control"
+        id="LogIdAdmin"
+        [(ngModel)]="Login.logId"
+        name="LogId"
+      />
+      <input
+        type="password"
+        placeholder="Contraseña"
+        required="true"
+        class="form-control"
+        id="passwordAdmin"
+        [(ngModel)]="Login.password"
+        name="password"
+      />
+      <button type="submit">Iniciar Sesión</button>
+    </form>
+  </div>
   <div class="form-container sign-in-container">
     <form (ngSubmit)="logIn()" #loginForm="ngForm">
       <h2>Iniciar Sesión</h2>

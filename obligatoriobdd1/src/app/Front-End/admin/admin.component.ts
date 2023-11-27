@@ -8,7 +8,7 @@ import { PeriodoActualizacionService } from '../Services/periodo-actualizacion.s
   styleUrls: ['./admin.component.css'],
 })
 export class AdminComponent {
-  date1:string="yyyy-mm-dd"
+  date1: string = 'yyyy-mm-dd';
 
   periodoActualizacion: PeriodoActualizacion = new PeriodoActualizacion();
   fechaFin: Date = new Date();
@@ -23,7 +23,7 @@ export class AdminComponent {
   } */
 
   modificarPeriodo() {
-    this.periodoActualizacion.fchFin=new Date(this.date1);
+    this.periodoActualizacion.fchFin = new Date(this.date1);
     this.periodoActualizacionService
       .modificarPeriodo(this.periodoActualizacion)
       .subscribe(

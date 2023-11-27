@@ -1,5 +1,5 @@
 export class Agenda {
-    nro? : number;
-    ci?: number;
-    fchAgenda?: Date;
+  nro?: number;
+  ci?: number;
+  fchAgenda?: Date;
 }

@@ -16,7 +16,7 @@ public class NotificacionService {
     @Autowired
     private EmailService emailService;
 
-    @Scheduled(cron = "0 0 0 * * ?")
+    @Scheduled(cron = "0 0 8 * * ?")
     public void notificarFuncionariosSinFormulario() {
       System.out.println("Hola");
 

@@ -8,12 +8,12 @@
         required="true"
         class="form-control"
         id="logId"
-        [(ngModel)]="login.logId"
+        [(ngModel)]="funcionario.logId"
         name="logId"
       />
       <input
         type="password"
-        placeholder="contraseña"
+        placeholder="Contraseña"
         required="true"
         class="form-control"
         id="password"
@@ -93,9 +93,22 @@
 
       <div *ngIf="!showInputs">
         <label for="fchAgenda">Selecciona una fecha de agenda:</label>
-        <select id="fchAgenda" name="fchAgenda" class="form-control" required>
-          <option *ngFor="let fecha of fechasDisponibles">
-            <h6>Fecha: {{ fecha.fchAgenda | date : "fullDate" }} - Nro: {{fecha.nro}}</h6>
+        <select
+          #agendas
+          id="fchAgenda"
+          (change)="onSelectChange(agendas)"
+          name="fchAgenda"
+          class="form-control"
+          required
+        >
+          <option
+            *ngFor="let fecha of fechasDisponibles"
+            value="{{ fecha.nro }}//{{ fecha.fchAgenda }}"
+          >
+            <h6>
+              Fecha: {{ fecha.fchAgenda | date : "fullDate" }} - Nro:
+              {{ fecha.nro }}
+            </h6>
           </option>
         </select>
       </div>
@@ -127,7 +140,6 @@
         [(ngModel)]="funcionario.email"
         name="email"
       />
-      
     </div>
     <button type="submit">Crear Cuenta</button>
   </form>
