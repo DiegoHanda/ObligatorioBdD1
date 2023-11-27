@@ -18,11 +18,7 @@ export class PeriodoActualizacionService {
   }
   estamosEnPeriodo(): boolean {
     let siEstamos: boolean = false;
-    /*  this.http.get(this.apiUrl).forEach(periodo => {
-      console.log(periodo)
-      alert(periodo);
-      
-    }); */
+   
 
     return siEstamos;
   }
@@ -75,10 +71,7 @@ export class PeriodoActualizacionService {
     const fecha1 = new Date(fechaStr1);
     const fecha2 = new Date(fechaStr2);
 
-    /* if (isNaN(fecha1.getTime()) || isNaN(fecha2.getTime())) {
-      // Verifica si las fechas son inválidas
-      return null; // Devuelve null si alguna de las fechas es inválida
-    } */
+   
 
     if (fecha1 > fecha2) {
       return true;
@@ -89,14 +82,5 @@ export class PeriodoActualizacionService {
     }
   }
 
-  /* // Ejemplo de uso
-  const fechaA = '2023-11-26';
-  const fechaB = '2023-11-30';
-  
-  const resultado = compararFechas(fechaA, fechaB);
-  if (resultado) {
-    console.log(resultado);
-  } else {
-    console.error('Formato de fecha inválido');
-  } */
+
 }
