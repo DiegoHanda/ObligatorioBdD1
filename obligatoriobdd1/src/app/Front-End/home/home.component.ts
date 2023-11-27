@@ -47,6 +47,29 @@ export class HomeComponent {
     }
     
   }
+  async logInAdmin() {
+   
+          let navigationExtras: NavigationExtras = {
+            queryParams: { id: this.Login.logId },
+          };
+          this.LoginService.submitLoginAdmin(this.Login).subscribe(
+            (response) => {
+              console.log('Response from server:', response);
+              if (response) {
+                //this.router.navigate(['/actualizar-carnet/:id'], navigationExtras);
+                this.router.navigate(['admin/:id'], navigationExtras);
+              } else {
+                alert('LA CONTRASEÑA O USUARIO NO COINCIDEN');
+              }
+            },
+            (error) => {
+              console.error('Error:', error);
+            }
+          );
+
+    
+    
+  }
 
   toggleOverlay(): void {
     this.overlayRight = !this.overlayRight;
