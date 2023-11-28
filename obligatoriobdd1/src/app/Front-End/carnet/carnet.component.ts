@@ -33,7 +33,6 @@ export class CarnetComponent {
     this.route.queryParams.subscribe((params) => {
       this.id = +params['id'];
     });
-    console.log(this.id);
     this.getDisponibles();
   }
   onSubmit() {
@@ -110,9 +109,7 @@ export class CarnetComponent {
   }
 
   toggleInputs(value: boolean): void {
-    console.log(this.showInputs);
     this.showInputs = value;
-    console.log(this.showInputs);
   }
 
   goHome() {

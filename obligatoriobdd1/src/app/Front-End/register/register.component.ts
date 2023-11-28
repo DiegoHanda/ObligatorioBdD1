@@ -79,7 +79,6 @@ export class RegisterComponent {
       );
   }
   saveCarnet() {
-    console.log(this.carnet.comprobante);
     this.carnetService
       .crearCarnet(
         new Carnet(this.carnet.fchVencimiento, this.carnet.comprobante),

@@ -12,8 +12,6 @@ export class PeriodoActualizacionService {
   constructor(private http: HttpClient) {}
 
   modificarPeriodo(pA: PeriodoActualizacion): Observable<Object> {
-    console.log(pA);
-    console.log(pA.fchFin);
     return this.http.put(this.apiUrl, pA);
   }
 
@@ -30,10 +28,6 @@ export class PeriodoActualizacionService {
         let fechInicioSTR: string = fechInicio.toString();
         let fechActSTR: string = fechAct.toString();
         let fechFinSTR: string = fechFin.toString();
-
-        console.log('ACTUAl:', fechAct);
-        console.log('INICIO:', fechInicio);
-        console.log('FIN:', fechFin);
 
         let esMayorqueFINICIO: boolean = this.compararFechas(
           fechActSTR,
